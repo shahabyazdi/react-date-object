@@ -106,16 +106,18 @@ export default class DateObject {
             value: {
                 YYYY: /\d{4}/,
                 YY: /\d\d/,
-                MMMM: /[A-z]{2,9}/,
-                MMM: /[A-z]{2,9}/,
+                MMMM: /[A-z]+/,
+                //month name
+                MMM: /[A-z]+/,
+                //month shortName
                 MM: /\d\d/,
                 M: /\d/,
                 DDDD: /\d{1,3}/,
                 DDD: /\d{1,3}/,
                 DD: /\d\d/,
                 D: /\d/,
-                dddd: /[A-z]{2,9}/,
-                ddd: /[A-z]{2,9}/,
+                dddd: /[A-z]+/, //weekDay name
+                ddd: /[A-z]+/,  //weekDay shortName
                 HH: /\d\d/,
                 H: /\d/,
                 hh: /\d\d/,
@@ -143,6 +145,8 @@ export default class DateObject {
                 "M": string => _classPrivateFieldSet(this, _month, Number(string) - 1),
                 "DD": string => _classPrivateFieldSet(this, _day, Number(string)),
                 "D": string => _classPrivateFieldSet(this, _day, Number(string)),
+                "dddd": string => null,
+                "ddd": string => null,
                 "HH": string => _classPrivateFieldSet(this, _hour, Number(string)),
                 "H": string => _classPrivateFieldSet(this, _hour, Number(string)),
                 "hh": string => {
@@ -169,204 +173,61 @@ export default class DateObject {
             writable: true,
             value: {
                 [DateObject.calendars.GEORGIAN]: {
-                    [DateObject.locals.EN]: [{
-                        name: "January",
-                        shortName: "Jan",
-                        length: 31
-                    }, {
-                        name: "February",
-                        shortName: "Feb",
-                        length: undefined
-                    }, {
-                        name: "March",
-                        shortName: "Mar",
-                        length: 31
-                    }, {
-                        name: "April",
-                        shortName: "Apr",
-                        length: 30
-                    }, {
-                        name: "May",
-                        shortName: "May",
-                        length: 31
-                    }, {
-                        name: "June",
-                        shortName: "June",
-                        length: 30
-                    }, {
-                        name: "July",
-                        shortName: "July",
-                        length: 31
-                    }, {
-                        name: "August",
-                        shortName: "Aug",
-                        length: 31
-                    }, {
-                        name: "September",
-                        shortName: "Sept",
-                        length: 30
-                    }, {
-                        name: "October",
-                        shortName: "Oct",
-                        length: 31
-                    }, {
-                        name: "November",
-                        shortName: "Nov",
-                        length: 30
-                    }, {
-                        name: "December",
-                        shortName: "Dec",
-                        length: 31
-                    }],
-                    [DateObject.locals.FA]: [{
-                        name: "ژانویه",
-                        shortName: "Jan",
-                        length: 31
-                    }, {
-                        name: "فوریه",
-                        shortName: "Feb",
-                        length: undefined
-                    }, {
-                        name: "مارس",
-                        shortName: "Mar",
-                        length: 31
-                    }, {
-                        name: "آوریل",
-                        shortName: "Apr",
-                        length: 30
-                    }, {
-                        name: "مه",
-                        shortName: "May",
-                        length: 31
-                    }, {
-                        name: "ژوئن",
-                        shortName: "June",
-                        length: 30
-                    }, {
-                        name: "ژوئیه",
-                        shortName: "July",
-                        length: 31
-                    }, {
-                        name: "اوت",
-                        shortName: "Aug",
-                        length: 31
-                    }, {
-                        name: "سپتامبر",
-                        shortName: "Sept",
-                        length: 30
-                    }, {
-                        name: "اکتبر",
-                        shortName: "Oct",
-                        length: 31
-                    }, {
-                        name: "نوامبر",
-                        shortName: "Nov",
-                        length: 30
-                    }, {
-                        name: "دسامبر",
-                        shortName: "Dec",
-                        length: 31
-                    }]
+                    [DateObject.locals.EN]: [
+                        { name: "January", shortName: "Jan", length: 31 },
+                        { name: "February", shortName: "Feb", length: undefined },
+                        { name: "March", shortName: "Mar", length: 31 },
+                        { name: "April", shortName: "Apr", length: 30 },
+                        { name: "May", shortName: "May", length: 31 },
+                        { name: "June", shortName: "June", length: 30 },
+                        { name: "July", shortName: "July", length: 31 },
+                        { name: "August", shortName: "Aug", length: 31 },
+                        { name: "September", shortName: "Sept", length: 30 },
+                        { name: "October", shortName: "Oct", length: 31 },
+                        { name: "November", shortName: "Nov", length: 30 },
+                        { name: "December", shortName: "Dec", length: 31 }],
+                    [DateObject.locals.FA]: [
+                        { name: "ژانویه", shortName: "Jan", length: 31 },
+                        { name: "فوریه", shortName: "Feb", length: undefined },
+                        { name: "مارس", shortName: "Mar", length: 31 },
+                        { name: "آوریل", shortName: "Apr", length: 30 },
+                        { name: "مه", shortName: "May", length: 31 },
+                        { name: "ژوئن", shortName: "June", length: 30 },
+                        { name: "ژوئیه", shortName: "July", length: 31 },
+                        { name: "اوت", shortName: "Aug", length: 31 },
+                        { name: "سپتامبر", shortName: "Sept", length: 30 },
+                        { name: "اکتبر", shortName: "Oct", length: 31 },
+                        { name: "نوامبر", shortName: "Nov", length: 30 },
+                        { name: "دسامبر", shortName: "Dec", length: 31 }]
                 },
                 [DateObject.calendars.PERSIAN]: {
-                    [DateObject.locals.EN]: [{
-                        name: "Farvardin",
-                        shortName: "Far",
-                        length: 31
-                    }, {
-                        name: "Ordibehesht",
-                        shortName: "Ord",
-                        length: 31
-                    }, {
-                        name: "Khordad",
-                        shortName: "Khor",
-                        length: 31
-                    }, {
-                        name: "Tir",
-                        shortName: "Tir",
-                        length: 31
-                    }, {
-                        name: "Mordad",
-                        shortName: "Mor",
-                        length: 31
-                    }, {
-                        name: "Shahrivar",
-                        shortName: "Sha",
-                        length: 31
-                    }, {
-                        name: "Mehr",
-                        shortName: "Mehr",
-                        length: 30
-                    }, {
-                        name: "Aban",
-                        shortName: "Aban",
-                        length: 30
-                    }, {
-                        name: "Azar",
-                        shortName: "Azar",
-                        length: 30
-                    }, {
-                        name: "Dey",
-                        shortName: "Dey",
-                        length: 30
-                    }, {
-                        name: "Bahman",
-                        shortName: "Bah",
-                        length: 30
-                    }, {
-                        name: "Esfand",
-                        shortName: "Esf",
-                        length: undefined
-                    }],
-                    [DateObject.locals.FA]: [{
-                        name: "فروردین",
-                        shortName: "فر",
-                        length: 31
-                    }, {
-                        name: "اردیبهشت",
-                        shortName: "ارد",
-                        length: 31
-                    }, {
-                        name: "خرداد",
-                        shortName: "خرد",
-                        length: 31
-                    }, {
-                        name: "تیر",
-                        shortName: "تیر",
-                        length: 31
-                    }, {
-                        name: "مرداد",
-                        shortName: "مر",
-                        length: 31
-                    }, {
-                        name: "شهریور",
-                        shortName: "شه",
-                        length: 31
-                    }, {
-                        name: "مهر",
-                        shortName: "مهر",
-                        length: 30
-                    }, {
-                        name: "آبان",
-                        shortName: "آبا",
-                        length: 30
-                    }, {
-                        name: "آذر",
-                        shortName: "آذر",
-                        length: 30
-                    }, {
-                        name: "دی",
-                        shortName: "دی",
-                        length: 30
-                    }, {
-                        name: "بهمن",
-                        shortName: "بهم",
-                        length: 30
-                    }, {
-                        name: "اسفند",
-                        shortName: "اسف",
-                        length: undefined
-                    }]
+                    [DateObject.locals.EN]: [
+                        { name: "Farvardin", shortName: "Far", length: 31 },
+                        { name: "Ordibehesht", shortName: "Ord", length: 31 },
+                        { name: "Khordad", shortName: "Khor", length: 31 },
+                        { name: "Tir", shortName: "Tir", length: 31 },
+                        { name: "Mordad", shortName: "Mor", length: 31 },
+                        { name: "Shahrivar", shortName: "Sha", length: 31 },
+                        { name: "Mehr", shortName: "Mehr", length: 30 },
+                        { name: "Aban", shortName: "Aban", length: 30 },
+                        { name: "Azar", shortName: "Azar", length: 30 },
+                        { name: "Dey", shortName: "Dey", length: 30 },
+                        { name: "Bahman", shortName: "Bah", length: 30 },
+                        { name: "Esfand", shortName: "Esf", length: undefined }],
+                    [DateObject.locals.FA]: [
+                        { name: "فروردین", shortName: "فر", length: 31 },
+                        { name: "اردیبهشت", shortName: "ارد", length: 31 },
+                        { name: "خرداد", shortName: "خرد", length: 31 },
+                        { name: "تیر", shortName: "تیر", length: 31 },
+                        { name: "مرداد", shortName: "مر", length: 31 },
+                        { name: "شهریور", shortName: "شه", length: 31 },
+                        { name: "مهر", shortName: "مهر", length: 30 },
+                        { name: "آبان", shortName: "آبا", length: 30 },
+                        { name: "آذر", shortName: "آذر", length: 30 },
+                        { name: "دی", shortName: "دی", length: 30 },
+                        { name: "بهمن", shortName: "بهم", length: 30 },
+                        { name: "اسفند", shortName: "اسف", length: undefined }
+                    ]
                 }
             }
         });
@@ -375,124 +236,44 @@ export default class DateObject {
             writable: true,
             value: {
                 [DateObject.calendars.GEORGIAN]: {
-                    [DateObject.locals.EN]: [{
-                        name: "Sunday",
-                        shortName: "Sun",
-                        index: 0
-                    }, {
-                        name: "Monday",
-                        shortName: "Mon",
-                        index: 1
-                    }, {
-                        name: "Tuesday",
-                        shortName: "Tue",
-                        index: 2
-                    }, {
-                        name: "Wednesday",
-                        shortName: "Wed",
-                        index: 3
-                    }, {
-                        name: "Thursday",
-                        shortName: "Thu",
-                        index: 4
-                    }, {
-                        name: "Friday",
-                        shortName: "Fri",
-                        index: 5
-                    }, {
-                        name: "Saturday",
-                        shortName: "Sat",
-                        index: 6
-                    }],
-                    [DateObject.locals.FA]: [{
-                        name: "یکشنبه",
-                        shortName: "یک",
-                        index: 0
-                    }, {
-                        name: "دوشنبه",
-                        shortName: "دو",
-                        index: 1
-                    }, {
-                        name: "سه شنبه",
-                        shortName: "سه",
-                        index: 2
-                    }, {
-                        name: "چهارشنبه",
-                        shortName: "چهار",
-                        index: 3
-                    }, {
-                        name: "پنجشنبه",
-                        shortName: "پنج",
-                        index: 4
-                    }, {
-                        name: "جمعه",
-                        shortName: "جم",
-                        index: 5
-                    }, {
-                        name: "شنبه",
-                        shortName: "شن",
-                        index: 6
-                    }]
+                    [DateObject.locals.EN]: [
+                        { name: "Sunday", shortName: "Sun", index: 0 },
+                        { name: "Monday", shortName: "Mon", index: 1 },
+                        { name: "Tuesday", shortName: "Tue", index: 2 },
+                        { name: "Wednesday", shortName: "Wed", index: 3 },
+                        { name: "Thursday", shortName: "Thu", index: 4 },
+                        { name: "Friday", shortName: "Fri", index: 5 },
+                        { name: "Saturday", shortName: "Sat", index: 6 }
+                    ],
+                    [DateObject.locals.FA]: [
+                        { name: "یکشنبه", shortName: "یک", index: 0 },
+                        { name: "دوشنبه", shortName: "دو", index: 1 },
+                        { name: "سه شنبه", shortName: "سه", index: 2 },
+                        { name: "چهارشنبه", shortName: "چهار", index: 3 },
+                        { name: "پنجشنبه", shortName: "پنج", index: 4 },
+                        { name: "جمعه", shortName: "جم", index: 5 },
+                        { name: "شنبه", shortName: "شن", index: 6 }
+                    ]
                 },
                 [DateObject.calendars.PERSIAN]: {
-                    [DateObject.locals.EN]: [{
-                        name: "Panjshanbeh",
-                        shortName: "Panj",
-                        index: 5
-                    }, {
-                        name: "Jomeh",
-                        shortName: "Jom",
-                        index: 6
-                    }, {
-                        name: "Shanbeh",
-                        shortName: "Shan",
-                        index: 0
-                    }, {
-                        name: "YekShanbeh",
-                        shortName: "Yek",
-                        index: 1
-                    }, {
-                        name: "Doshanbeh",
-                        shortName: "do",
-                        index: 2
-                    }, {
-                        name: "Seshanbeh",
-                        shortName: "Se",
-                        index: 3
-                    }, {
-                        name: "Chaharshanbeh",
-                        shortName: "Char",
-                        index: 4
-                    }],
-                    [DateObject.locals.FA]: [{
-                        name: "پنجشنبه",
-                        shortName: "پنج",
-                        index: 5
-                    }, {
-                        name: "جمعه",
-                        shortName: "جم",
-                        index: 6
-                    }, {
-                        name: "شنبه",
-                        shortName: "شن",
-                        index: 0
-                    }, {
-                        name: "یکشنبه",
-                        shortName: "یک",
-                        index: 1
-                    }, {
-                        name: "دوشنبه",
-                        shortName: "دو",
-                        index: 2
-                    }, {
-                        name: "سه شنبه",
-                        shortName: "سه",
-                        index: 3
-                    }, {
-                        name: "چهارشنبه",
-                        shortName: "چهار",
-                        index: 4
-                    }]
+                    [DateObject.locals.EN]: [
+                        { name: "Panjshanbeh", shortName: "Pa", index: 5 },
+                        { name: "Jomeh", shortName: "Jo", index: 6 },
+                        { name: "Shanbeh", shortName: "Sh", index: 0 },
+                        { name: "YekShanbeh", shortName: "Ye", index: 1 },
+                        { name: "Doshanbeh", shortName: "Do", index: 2 },
+                        { name: "Seshanbeh", shortName: "Se", index: 3 },
+                        { name: "Chaharshanbeh", shortName: "Ch", index: 4 }
+                    ],
+                    [DateObject.locals.FA]: [
+                        { name: "پنجشنبه", shortName: "پنج", index: 5 },
+                        { name: "جمعه", shortName: "جم", index: 6 },
+                        { name: "شنبه", shortName: "شن", index: 0 },
+                        { name: "یکشنبه", shortName: "یک", index: 1 },
+                        { name: "دوشنبه", shortName: "دو", index: 2 },
+                        { name: "سه شنبه", shortName: "سه", index: 3 },
+                        { name: "چهارشنبه", shortName: "چهار", index: 4 }
+                    ]
                 }
             }
         });
@@ -508,20 +289,14 @@ export default class DateObject {
         _meridiems.set(this, {
             writable: true,
             value: {
-                [DateObject.locals.EN]: [{
-                    lowerCase: "am",
-                    upperCase: "AM"
-                }, {
-                    lowerCase: "pm",
-                    upperCase: "PM"
-                }],
-                [DateObject.locals.FA]: [{
-                    lowerCase: "ق.ظ",
-                    upperCase: "قبل از ظهر"
-                }, {
-                    lowerCase: "ب.ظ",
-                    upperCase: "بعد از ظهر"
-                }]
+                [DateObject.locals.EN]: [
+                    { lowerCase: "am", upperCase: "AM" },
+                    { lowerCase: "pm", upperCase: "PM" }
+                ],
+                [DateObject.locals.FA]: [
+                    { lowerCase: "ق.ظ", upperCase: "قبل از ظهر" },
+                    { lowerCase: "ب.ظ", upperCase: "بعد از ظهر" }
+                ]
             }
         });
 
@@ -1118,14 +893,11 @@ export default class DateObject {
                 _classPrivateFieldSet(this, _hour, _classPrivateFieldGet(this, _hour) + 12);
             }
         } else {
-            for (let key in _classPrivateFieldGet(this, _types)) {
-                const match = format.match(new RegExp(key));
-                if (!match) continue;
-                const str = string.substring(match.index, string.length).match(_classPrivateFieldGet(this, _types)[key])[0];
+            const formatArray = format.split(/[^\w\u0600-\u06FF]/);
+            const stringArray = string.split(/[^\w\u0600-\u06FF]/);
 
-                _classPrivateFieldGet(this, _reverse)[key](str);
-
-                format = format.replace(key, "?".repeat(key.length));
+            for (let i = 0; i < formatArray.length; i++) {
+                if (stringArray[i]) _classPrivateFieldGet(this, _reverse)[formatArray[i]](stringArray[i]);
             }
 
             if (!_classPrivateFieldGet(this, _hour)) _classPrivateFieldSet(this, _hour, 0);
