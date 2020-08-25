@@ -6,12 +6,12 @@ default: `georgian`
 supported locals: `en` , `fa`
 default: `en`
 
-React: [react-date-object](https://github.com/shahabyazdi/react-date-object)
+NodeJs: [date-object](https://github.com/shahabyazdi/date-object)
 
 # Install
 
 ```shell
-npm install date-object --save
+npm install react-date-object --save
 ```
 
 # Example
@@ -232,6 +232,7 @@ date.month = 8;
 date.day = 21;
 
 date.isLeap; //true
+date.isValid; //true
 date.month.name; //August
 date.month.length; //31
 date.month.index; //7
