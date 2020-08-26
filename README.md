@@ -67,7 +67,7 @@ date.format(); //2019/09/20
   date: String , Number(unix timestamp), JavaScript Date or DateObject, //default new Date()
   calendar: `georgian` or `persian`, //default `georgian`
   local: `en` or `fa`, //default `en`
-  format: `String` //default `YYYY/MM/DD`
+  format: `String` //default `YYYY/MM/DD `
 }
 
 ```
