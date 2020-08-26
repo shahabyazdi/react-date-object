@@ -290,6 +290,7 @@ date.toLastWeekOfYear(); //2020/12/27
 date.toString(); //2020/12/27
 date.toDate(); //instanceof Date
 date.toUnix(); //1609014600
+date.valueOf(); //1609014600000
 ```
 
 # using calendars, format & locals
