@@ -1,9 +1,9 @@
 # Date Object
 
-supported calendars: `georgian` , `persian`
-default: `georgian`
+supported calendars: `gregorian` , `persian` , `arabic`
+default: `gregorian`
 
-supported locals: `en` , `fa`
+supported locals: `en` , `fa` , `ar`
 default: `en`
 
 NodeJs: [date-object](https://github.com/shahabyazdi/date-object)
@@ -12,6 +12,14 @@ NodeJs: [date-object](https://github.com/shahabyazdi/date-object)
 
 ```shell
 npm install react-date-object --save
+```
+
+# Usage
+
+```javascript
+import DateObject from "react-date-object";
+
+var dateObject = new DateObject();
 ```
 
 # Example
@@ -65,9 +73,9 @@ date.format(); //2019/09/20
 ```javascript
 {
   date: String , Number(unix timestamp), JavaScript Date or DateObject, //default new Date()
-  calendar: `georgian` or `persian`, //default `georgian`
+  calendar: `gregorian` or `persian`, //default `gregorian`
   local: `en` or `fa`, //default `en`
-  format: `String` //default `YYYY/MM/DD `
+  format: `String` //default `YYYY/MM/DD`
 }
 
 ```
@@ -75,7 +83,7 @@ date.format(); //2019/09/20
 ```javascript
 var date = new DateObject({
   date: new Date(),
-  calendar: "georgian",
+  calendar: "gregorian",
   local: "en",
 });
 
@@ -110,7 +118,7 @@ date.format(); //31 Mordad 1399
   minute: Number, //default 0
   second: Number, //default 0
   millisecond: Number, //default 0
-  calendar: `georgian` or `persian`, //default `georgian`
+  calendar: `gregorian` or `persian`, //default `gregorian`
   local: `en` or `fa`, //default `en`
   format: String //default `YYYY/MM/DD`
 }
@@ -160,7 +168,7 @@ date.format(); //جمعه ۳۱ مرداد ۱۳۹۹
 var date = new DateObject();
 
 date
-  .setCalendar("georgian")
+  .setCalendar("gregorian")
   .setFormat("YYYY-MM-DD HH:mm:ss.SSS")
   .setLocal("en")
   .setYear(2020)
@@ -273,7 +281,26 @@ date.setFormat("YYYY/MM/DD HH:mm").parse("1399/06/03 12:32");
 date.format("dddd DD MMMM @ hh:mm a"); //Doshanbeh 03 Shahrivar @ 12:32 am
 ```
 
-## 5- other methods
+## 5- getProperty
+
+```javascript
+let date = new DateObject({
+  calendar: "arabic",
+  date: "1442/01/01",
+  local: "ar",
+});
+
+date.getProperty("M"); //1
+date.format("M"); //١
+
+typeof date.getProperty("D"); //number
+typeof date.format("D"); //string
+
+Number(date.getProperty("YYYY")); //1442
+Number(date.format("YYYY")); //NaN
+```
+
+## 6- other methods
 
 ```javascript
 var date = new DateObject();
@@ -290,13 +317,14 @@ date.toLastWeekOfYear(); //2020/12/27
 date.toString(); //2020/12/27
 date.toDate(); //instanceof Date
 date.toUnix(); //1609014600
+date.toJulianDay(); //2459210
 date.valueOf(); //1609014600000
 ```
 
 # using calendars, format & locals
 
 ```javascript
-var date = new DateObject({ calendar: "georgian", format: "dddd DD MMMM" });
+var date = new DateObject({ calendar: "gregorian", format: "dddd DD MMMM" });
 
 date.format(); //Friday 21 August
 
@@ -304,9 +332,10 @@ date.calendar = "persian"; //Jomeh 31 Mordad
 date.local = "fa"; //جمعه 31 مرداد
 date._format = "YY/MM/DD"; //۹۹/۰۵/۳۱
 
-date.setCalendar("georgian").setLocal("en"); //20/08/21
+date.setCalendar("gregorian").setLocal("en"); //20/08/21
 
 date = new DateObject(new Date());
 
 date.convert("persian").format(); //1399/05/31
+date.convert("arabic").format(); //1442/01/02
 ```
