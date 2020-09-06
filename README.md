@@ -73,8 +73,8 @@ date.format(); //2019/09/20
 ```javascript
 {
   date: String , Number(unix timestamp), JavaScript Date or DateObject, //default new Date()
-  calendar: `gregorian` or `persian`, //default `gregorian`
-  local: `en` or `fa`, //default `en`
+  calendar: `gregorian`, `persian` or `arabic`, //default `gregorian`
+  local: `en`, `fa` or `ar`, //default `en`
   format: `String` //default `YYYY/MM/DD`
 }
 
@@ -118,8 +118,8 @@ date.format(); //31 Mordad 1399
   minute: Number, //default 0
   second: Number, //default 0
   millisecond: Number, //default 0
-  calendar: `gregorian` or `persian`, //default `gregorian`
-  local: `en` or `fa`, //default `en`
+  calendar: `gregorian`, `persian` or `arabic`, //default `gregorian`
+  local: `en`, `fa` or `ar`, //default `en`
   format: String //default `YYYY/MM/DD`
 }
 
@@ -318,7 +318,7 @@ date.toString(); //2020/12/27
 date.toDate(); //instanceof Date
 date.toUnix(); //1609014600
 date.toJulianDay(); //2459210
-date.valueOf(); //1609014600000
+date.valueOf(); //737786
 ```
 
 # using calendars, format & locals
