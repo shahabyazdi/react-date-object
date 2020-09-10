@@ -396,7 +396,7 @@ date.convert("arabic").format(); //1442/01/02
 | WW   |    week of year     |      01, 03, 24, 33, ...      | format                       |
 | W    |    week of year     |       1, 3, 24. 33, ...       | format                       |
 | dddd |    week day name    | Saturday, Sunday, Monday, ... | format                       |
-| dddd | week day short name |      Sat, Sun, Mon, ...       | format                       |
+| ddd  | week day short name |      Sat, Sun, Mon, ...       | format                       |
 | HH   | 03, 09, 10, 17,...  | 2 digits hour (24 hour mode)  | both                         |
 | H    |  3, 9, 10, 17,...   |      hour (24 hour mode)      | both                         |
 | hh   | 03, 09, 10, 17,...  | 2 digits hour (12 hour mode)  | both                         |
