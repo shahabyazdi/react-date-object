@@ -1,4 +1,4 @@
-# Date Object
+# React Date Object
 
 supported calendars: `gregorian` , `persian` , `arabic`
 default: `gregorian`
@@ -10,8 +10,16 @@ NodeJs: [date-object](https://github.com/shahabyazdi/date-object)
 
 # Install
 
+## npm:
+
 ```shell
 npm install react-date-object --save
+```
+
+## yarn:
+
+```shell
+yarn add react-date-object
 ```
 
 # Usage
@@ -319,6 +327,37 @@ date.toDate(); //instanceof Date
 date.toUnix(); //1609014600
 date.toJulianDay(); //2459210
 date.valueOf(); //737786
+date.toObject();
+/**
+ *{
+ *    year: 2020,
+ *    month: {
+ *        length: 31,
+ *        name: 'December',
+ *        shortName: 'Dec',
+ *        index: 11,
+ *        number: 12,
+ *        toString: [Function (anonymous)]
+ *    },
+ *    day: 27,
+ *    weekDay: {
+ *        index: 0,
+ *        number: 1,
+ *        toString: [Function: toString],
+ *        name: 'Sunday',
+ *        shortName: 'Sun'
+ *    },
+ *    hour: 11,
+ *    minute: 8,
+ *    second: 34,
+ *    millisecond: 0,
+ *    weekOfYear: 52,
+ *    dayOfYear: 362,
+ *    daysLeft: 4,
+ *    calendar: 'gregorian',
+ *    local: 'en'
+ *}
+ */
 ```
 
 # using calendars, format & locals
@@ -339,3 +378,35 @@ date = new DateObject(new Date());
 date.convert("persian").format(); //1399/05/31
 date.convert("arabic").format(); //1442/01/02
 ```
+
+# format types
+
+| Type |       Example       |          Description          | Availability (Parse /Format) |
+| ---- | :-----------------: | :---------------------------: | ---------------------------- |
+| YYYY |        2020         |           full year           | both                         |
+| YY   |         20          |         2 digits year         | both                         |
+| MMMM |      December       |          month name           | both                         |
+| MMM  |         Dec         |       month short name        | both                         |
+| MM   |   03, 09, 10, ...   |     2 digits month number     | both                         |
+| M    |    3, 9, 10, ...    |         month number          | both                         |
+| DDDD |         09          |          day of year          | format                       |
+| DDD  |          9          |          day of year          | format                       |
+| DD   | 03, 09, 10, 17, ... |     2 digits day of month     | both                         |
+| D    |    3, 9 ,10, 17     |         day of month          | both                         |
+| WW   |    week of year     |      01, 03, 24, 33, ...      | format                       |
+| W    |    week of year     |       1, 3, 24. 33, ...       | format                       |
+| dddd |    week day name    | Saturday, Sunday, Monday, ... | format                       |
+| dddd | week day short name |      Sat, Sun, Mon, ...       | format                       |
+| HH   | 03, 09, 10, 17,...  | 2 digits hour (24 hour mode)  | both                         |
+| H    |  3, 9, 10, 17,...   |      hour (24 hour mode)      | both                         |
+| hh   | 03, 09, 10, 17,...  | 2 digits hour (12 hour mode)  | both                         |
+| h    |  3, 9, 10, 17,...   |      hour (12 hour mode)      | both                         |
+| mm   | 03, 09, 10, 17,...  |        2 digits minute        | both                         |
+| m    |  3, 9, 10, 17,...   |            minute             | both                         |
+| ss   | 03, 09, 10, 17,...  |        2 digits second        | both                         |
+| s    |  3, 9, 10, 17,...   |            second             | both                         |
+| SSS  |         100         |     3 digits millisecond      | both                         |
+| SS   |         10          |     2 digits millisecond      | both                         |
+| S    |         10          |      1 digit millisecond      | both                         |
+| A    |         AM          |           meridiem            | both                         |
+| a    |         am          |      meridiem lowercase       | both                         |
