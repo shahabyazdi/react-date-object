@@ -43,7 +43,7 @@ date.format("YYYY/MM/DD hh:mm:ss.SSS a"); //2020/08/21 11:55:36.100 am
 
 date = new DateObject("2020/08/01");
 
-date.format("YYYY/MM/DD hh:mm:ss.SSS a"); //2020/08/01 00:00:00.0 am
+date.format("YYYY/MM/DD hh:mm:ss.SSS a"); //2020/08/01 12:00:00.0 am
 ```
 
 ### 1-2- Number (unix timestamp)
@@ -407,6 +407,6 @@ date.convert("arabic").format(); //1442/01/02
 | s    |  3, 9, 10, 17,...   |            second             | both                         |
 | SSS  |         100         |     3 digits millisecond      | both                         |
 | SS   |         10          |     2 digits millisecond      | both                         |
-| S    |         10          |      1 digit millisecond      | both                         |
+| S    |          1          |      1 digit millisecond      | both                         |
 | A    |         AM          |           meridiem            | both                         |
 | a    |         am          |      meridiem lowercase       | both                         |
