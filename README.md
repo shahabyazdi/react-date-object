@@ -308,7 +308,64 @@ Number(date.getProperty("YYYY")); //1442
 Number(date.format("YYYY")); //NaN
 ```
 
-## 6- other methods
+## 6- add(duration:Number or String,type:String)
+
+<table>
+  <tr>
+    <th colspan="3">Types</td>
+  </tr>
+  <tr>
+    <td>years</td>
+    <td>year</td>
+    <td>y</td>
+  </tr>
+  <tr>
+    <td>months</td>
+    <td>month</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>days</td>
+    <td>day</td>
+    <td>d</td>
+  </tr>
+  <tr>
+    <td>hours</td>
+    <td>hour</td>
+    <td>h</td>
+  </tr>
+  <tr>
+    <td>minutes</td>
+    <td>minute</td>
+    <td>m</td>
+  </tr>
+  <tr>
+    <td>seconds</td>
+    <td>second</td>
+    <td>s</td>
+  </tr>
+  <tr>
+    <td>milliseconds</td>
+    <td>millisecond</td>
+    <td>ms</td>
+  </tr>
+</table>
+
+```javascript
+var date = new DateObject("2020/10/07 5:35:24 pm");
+
+date.setFormat("YYYY/MM/DD hh:mm:ss.SSS");
+
+date.add(2, "years").format(); //2022/10/07 05:35:24.000
+date.add("1", "month").format(); //2022/11/07 05:35:24.000
+date.add(3, "d").format(); //2022/11/10 05:35:24.000
+date.add(-4, "hours").format(); //2022/11/10 01:35:24.000
+date.add(1, "minute").format(); //2022/11/10 01:36:24.000
+date.add("-20", "s").format(); //2022/11/10 01:36:04.000
+date.add(100, "milliseconds").format(); //2022/11/10 01:36:04.100
+```
+
+## 7- other methods
 
 ```javascript
 var date = new DateObject();
