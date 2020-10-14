@@ -365,7 +365,31 @@ date.add("-20", "s").format(); //2022/11/10 01:36:04.000
 date.add(100, "milliseconds").format(); //2022/11/10 01:36:04.100
 ```
 
-## 7- other methods
+## 7- toUTC()
+
+```javascript
+let date = new Date() //Wed Oct 14 2020 11:12:18 GMT+0330
+
+let dateObject = new DateObject({
+    date,
+    calendar: "arabic",
+    format: "ddd, DD MMM YYYY HH:mm:ss"
+}) //Arb, 26 Sa 1442 11:12:18
+
+console.log(`
+dateUTC      : ${date.toUTCString()}
+arabicUTC    : ${dateObject.toUTC().toString()}
+gregorianUTC : ${dateObject.convert().toString()}
+`);
+
+/**
+ * dateUTC      : Wed, 14 Oct 2020 07:42:18 GMT
+ * arabicUTC    : Arb, 26 Sa 1442 07:42:18
+ * gregorianUTC : Wed, 14 Oct 2020 07:42:18
+ *  /
+```
+
+## 8- other methods
 
 ```javascript
 var date = new DateObject();
