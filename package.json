@@ -1,6 +1,6 @@
 {
   "name": "react-date-object",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "JavaScript library for working with Date and Time in different calendars and locals",
   "main": "./dist/index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
     "babel-preset-env": "^1.7.0",
-    "date-object": "^0.5.0",
+    "date-object": "^0.5.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
