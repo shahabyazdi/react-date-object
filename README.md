@@ -405,9 +405,9 @@ date.toLastWeekOfYear(); //2020/12/27
 
 date.toString(); //2020/12/27
 date.toDate(); //instanceof Date
-date.toUnix(); //1609014600
+date.toUnix(); //1609054714
 date.toJulianDay(); //2459210
-date.valueOf(); //737786
+date.valueOf(); //737786, same as dayOfBeginning()
 date.toObject();
 /**
  *{
@@ -439,6 +439,13 @@ date.toObject();
  *    local: 'en'
  *}
  */
+
+date.toJSON(); //same as toObject()
+
+JSON.stringify(dateObject);
+//{"year":2020,"month":{"length":31,"name":"December","shortName":"Dec","index":11,"number":12},"day":27,"weekDay":{"index":0,"number":1,"name":"Sunday","shortName":"Sun"},"hour":0,"minute":0,"second":0,"millisecond":0,"weekOfYear":52,"dayOfYear":362,"daysLeft":4,"calendar":"gregorian","local":"en"}
+
+new DateObject(date.toJSON()).format(); //2020/12/27
 ```
 
 # using calendars, format & locals
