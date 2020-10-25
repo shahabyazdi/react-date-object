@@ -1,6 +1,6 @@
 # React Date Object
 
-supported calendars: `gregorian` , `persian` , `arabic`
+supported calendars: `gregorian` , `persian` , `arabic`, `indian`
 default: `gregorian`
 
 supported locals: `en` , `fa` , `ar`
