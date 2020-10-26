@@ -3,7 +3,7 @@
 supported calendars: `gregorian` , `persian` , `arabic`, `indian`
 default: `gregorian`
 
-supported locals: `en` , `fa` , `ar`
+supported locals: `en` , `fa` , `ar` , `hi`
 default: `en`
 
 NodeJs: [date-object](https://github.com/shahabyazdi/date-object)
