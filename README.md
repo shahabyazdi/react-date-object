@@ -22,6 +22,15 @@ npm install react-date-object --save
 yarn add react-date-object
 ```
 
+# Supported Calendars & Locals
+
+| Calendar  | Local |
+| --------- | :---: |
+| gregorian |  en   |
+| persian   |  fa   |
+| arabic    |  ar   |
+| indian    |  hi   |
+
 # Usage
 
 ```javascript
