@@ -206,6 +206,12 @@ date
   .setFormat("dddd DD MMMM YYYY");
 
 date.format(); //Jomeh 21 Azar 1399
+
+date.setDate(new Date(2020, 9, 27)).format(); //Tuesday 27 October 2020 (calendar is set to gregorian)
+
+date
+  .setDate(new DateObject({ calendar: "indian", year: 1942, month: 8, day: 5 })) //format is set based on given DateObject (default:YYYY/MM/DD)
+  .format(); //1942/08/05
 ```
 
 ## 3- get and set
