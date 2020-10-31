@@ -380,7 +380,9 @@ date.add("-20", "s").format(); //2022/11/10 01:36:04.000
 date.add(100, "milliseconds").format(); //2022/11/10 01:36:04.100
 ```
 
-## 7- set(key:String,value:Any)
+## 7- set method
+
+### 7-1 set(key:String,value:Any)
 
 ```javascript
 var date = new DateObject(); //2020/10/31
@@ -393,6 +395,16 @@ date.set("calendar", "indian"); //10/17/1942
 date.set("local", "hi"); //१०/१७/१९४२
 date.set("date", new DateObject({ calendar: "persian", local: "en" })); //1399/08/10
 date.set("date", new Date()); //2020/10/31 (calendar is set to gregorian)
+```
+
+### 7-2 set(object)
+
+```javascript
+var date = new DateObject(); //2020/10/31
+
+date.set({ calendar: "persian", format: "dddd DD MMMM YYYY" }); //Shanbeh 10 Aban 1399
+date.set({ calendar: "gregorian", year: 2020, month: 11, day: 12 }); //Saturday 12 December 2020
+date.set(new DateObject().toObject()); //2020/10/31
 ```
 
 ## 8- toUTC()
