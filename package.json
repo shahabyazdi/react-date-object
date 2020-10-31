@@ -1,6 +1,6 @@
 {
   "name": "react-date-object",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "JavaScript library for working with Date and Time in different calendars and locals",
   "main": "./dist/index.js",
   "scripts": {
@@ -15,13 +15,21 @@
     "react",
     "date",
     "object",
-    "georgian",
-    "persian",
     "calendar",
-    "english",
+    "persian",
+    "georgian",
+    "indian",
     "farsi",
     "arabic",
-    "local"
+    "english",
+    "hindi",
+    "locals",
+    "datetime",
+    "gregorian-calendar",
+    "persian-calendar",
+    "islamic-calendar",
+    "indian-calendar",
+    "format-date"
   ],
   "author": "Shahab Yazdi <sh.yazdi@gmail.com>",
   "license": "MIT",
@@ -37,7 +45,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
     "babel-preset-env": "^1.7.0",
-    "date-object": "^0.8.0",
+    "date-object": "^0.9.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

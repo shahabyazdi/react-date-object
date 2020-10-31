@@ -380,7 +380,22 @@ date.add("-20", "s").format(); //2022/11/10 01:36:04.000
 date.add(100, "milliseconds").format(); //2022/11/10 01:36:04.100
 ```
 
-## 7- toUTC()
+## 7- set(key:String,value:Any)
+
+```javascript
+var date = new DateObject(); //2020/10/31
+
+date.set("year", 2021); //2021/10/31
+date.set("month", 1); //2021/01/31
+date.set("day", 7); //2021/01/07
+date.set("format", "MM/DD/YYYY"); //01/07/2021
+date.set("calendar", "indian"); //10/17/1942
+date.set("local", "hi"); //१०/१७/१९४२
+date.set("date", new DateObject({ calendar: "persian", local: "en" })); //1399/08/10
+date.set("date", new Date()); //2020/10/31 (calendar is set to gregorian)
+```
+
+## 8- toUTC()
 
 ```javascript
 let date = new Date() //Wed Oct 14 2020 11:12:18 GMT+0330
