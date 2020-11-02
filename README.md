@@ -1,6 +1,6 @@
 # React Date Object
 
-supported calendars: `gregorian` , `persian` , `arabic`, `indian`
+supported calendars: `gregorian` , `persian` , `arabic` , `indian`
 default: `gregorian`
 
 supported locals: `en` , `fa` , `ar` , `hi`
@@ -8,7 +8,7 @@ default: `en`
 
 NodeJs: [date-object](https://github.com/shahabyazdi/date-object)
 
-# Install
+# 1- Install
 
 ## npm:
 
@@ -22,28 +22,47 @@ npm install react-date-object --save
 yarn add react-date-object
 ```
 
-# Supported Calendars & Locals
-
-| Calendar  | Local |
-| --------- | :---: |
-| gregorian |  en   |
-| persian   |  fa   |
-| arabic    |  ar   |
-| indian    |  hi   |
-
-# Usage
+# 2- Usage
 
 ```javascript
-import DateObject from "react-date-object";
+var DateObject = require("date-object");
 
 var dateObject = new DateObject();
 ```
 
-# Example
+# 3- static properties
 
-## 1- new instance
+## 3-1- calendars
 
-### 1-1- String (year month day hour minute second millisecond meridiem)
+returns supported calendars
+
+```javascript
+{
+  GREGORIAN: 'GREGORIAN',
+  PERSIAN: 'PERSIAN',
+  ARABIC: 'ARABIC',
+  INDIAN: 'INDIAN'
+}
+```
+
+## 3-2- locals
+
+returns supported locals
+
+```javascript
+{
+  EN: 'EN',
+  FA: 'FA', //farsi - persian
+  AR: 'AR', //arabic
+  HI: 'HI'  //hindi - indian
+}
+```
+
+# 4- Examples
+
+## 4-1- new instance
+
+### 4-1-1- String (year month day hour minute second millisecond meridiem)
 
 ```javascript
 var date = new DateObject("2020 8 21 11 55 36 100 am");
@@ -55,7 +74,7 @@ date = new DateObject("2020/08/01");
 date.format("YYYY/MM/DD hh:mm:ss.SSS a"); //2020/08/01 12:00:00.0 am
 ```
 
-### 1-2- Number (unix timestamp)
+### 4-1-2- Number (unix timestamp)
 
 ```javascript
 var date = new DateObject(1597994736);
@@ -63,7 +82,7 @@ var date = new DateObject(1597994736);
 date.format("dddd DD MMMM @ hh:mm:ss.SSS a"); //Friday 21 August @ 11:55:36.0 am
 ```
 
-### 1-3- JavaScript Date
+### 4-1-3- JavaScript Date
 
 ```javascript
 var $date = new Date(2019, 8, 20);
@@ -73,7 +92,7 @@ var date = new DateObject($date);
 date.format(); //2019/09/20
 ```
 
-### 1-4- DateObject
+### 4-1-4- DateObject
 
 ```javascript
 var $date = new DateObject("2019/09/20");
@@ -83,9 +102,9 @@ var date = new DateObject($date);
 date.format(); //2019/09/20
 ```
 
-### 1-5- Object
+### 4-1-5- Object
 
-#### 1-5-1-
+#### 4-1-5-1-
 
 ```javascript
 {
@@ -124,7 +143,7 @@ date = new DateObject({
 date.format(); //31 Mordad 1399
 ```
 
-#### 1-5-2-
+#### 4-1-5-2-
 
 ```javascript
 {
@@ -179,7 +198,35 @@ date = new DateObject({
 date.format(); //جمعه ۳۱ مرداد ۱۳۹۹
 ```
 
-## 2- setter methods
+## 4-2- convert(calendar:String)
+
+if you use the convert method without argument, the date will be converted to Gregorian calendar.
+
+```javascript
+var date = new DateObject(); //2020/10/31
+
+date.convert(DateObject.calendars.PERSIAN); //1399/08/10 or date.convert("persian")
+date.convert(DateObject.calendars.ARABIC); //1442/03/14 or date.convert("arabic")
+date.convert(DateObject.calendars.INDIAN); //1942/08/09 or date.convert("indian")
+date.convert(DateObject.calendars.GREGORIAN); //2020/10/31 or date.convert()
+```
+
+## 4-3- format(token:String)
+
+default format is YYYY/MM/DD
+to see all format types click [here](#-5--format-types)
+
+```javascript
+var date = new DateObject();
+
+date.format(); //2020/10/31
+date.format("MM/DD/YYYY"); //10/31/2020
+date.format("MMM/DD/YYYY HH:mm:ss"); //Oct/31/2020 18:17:28
+date.format("dddd DD MMMM YYYY, hh:mm:ss A"); //Saturday 31 October 2020, 06:19:18 PM
+date.format("ddd DD MMM YYYY, hh:mm a"); //Sat 31 Oct 2020, 06:20 pm
+```
+
+## 4-4- setter methods
 
 ```javascript
 var date = new DateObject();
@@ -214,7 +261,7 @@ date
   .format(); //1942/08/05
 ```
 
-## 3- get and set
+## 4-5- get and set
 
 ```javascript
 var date = new DateObject();
@@ -264,6 +311,7 @@ date.day = 21;
 
 date.isLeap; //true
 date.isValid; //true
+date.isUTC; //false
 date.month.name; //August
 date.month.length; //31
 date.month.index; //7
@@ -279,12 +327,14 @@ date.daysLeft; //132
 date.weekOfYear; //34
 date.unix; //1597951800
 
-date.weeks; // array [{ name: 'Sunday', shortName: 'Sun', ...}]
+date.weekDays; // array [{ name: 'Sunday', shortName: 'Sun', ...}]
 date.months; //array [{ name: 'January', shortName: 'Jan', ...}]
 date.leaps; //array [4,   8,  12,  16,  20,...]
 ```
 
-## 4- parse method
+## 4-6- parse(date:String)
+
+Remember that parsing date is based on the format you set
 
 ```javascript
 var date = new DateObject();
@@ -304,7 +354,7 @@ date.setFormat("YYYY/MM/DD HH:mm").parse("1399/06/03 12:32");
 date.format("dddd DD MMMM @ hh:mm a"); //Doshanbeh 03 Shahrivar @ 12:32 am
 ```
 
-## 5- getProperty
+## 4-7- getProperty
 
 ```javascript
 let date = new DateObject({
@@ -323,7 +373,7 @@ Number(date.getProperty("YYYY")); //1442
 Number(date.format("YYYY")); //NaN
 ```
 
-## 6- add(duration:Number or String,type:String)
+## 4-8- add(duration:Number or String,type:String)
 
 <table>
   <tr>
@@ -380,9 +430,9 @@ date.add("-20", "s").format(); //2022/11/10 01:36:04.000
 date.add(100, "milliseconds").format(); //2022/11/10 01:36:04.100
 ```
 
-## 7- set method
+## 4-9- set method
 
-### 7-1 set(key:String,value:Any)
+### 4-9-1 set(key:String,value:Any)
 
 ```javascript
 var date = new DateObject(); //2020/10/31
@@ -397,7 +447,7 @@ date.set("date", new DateObject({ calendar: "persian", local: "en" })); //1399/0
 date.set("date", new Date()); //2020/10/31 (calendar is set to gregorian)
 ```
 
-### 7-2 set(object)
+### 4-9-2 set(object)
 
 ```javascript
 var date = new DateObject(); //2020/10/31
@@ -407,7 +457,7 @@ date.set({ calendar: "gregorian", year: 2020, month: 11, day: 12 }); //Saturday 
 date.set(new DateObject().toObject()); //2020/10/31
 ```
 
-## 8- toUTC()
+## 4-10- toUTC()
 
 ```javascript
 let date = new Date() //Wed Oct 14 2020 11:12:18 GMT+0330
@@ -429,9 +479,76 @@ gregorianUTC : ${dateObject.convert().toString()}
  * arabicUTC    : Arb, 26 Sa 1442 07:42:18
  * gregorianUTC : Wed, 14 Oct 2020 07:42:18
  *  /
+
 ```
 
-## 8- other methods
+## 4-11- custom months & week days
+
+See the example below in case you want to use your personal names instead default names of months and week days
+
+```javascript
+var date = new DateObject();
+
+date.format("MMMM MMM"); //November Nov
+date.format("dddd ddd"); //Monday Mon
+
+//follow this method to name the months and week days: [["name1","shortName1"],["name2","shortName2"],...]
+
+date.months = [
+  ["jan", "j"],
+  ["feb", "f"],
+  ["mar", "m"],
+  ["apr", "a"],
+  ["may", "m"],
+  ["jun", "j"],
+  ["jul", "j"],
+  ["aug", "a"],
+  ["sep", "s"],
+  ["oct", "o"],
+  ["nov", "n"],
+  ["dec", "d"],
+];
+
+date.weekDays = [
+  ["su", "s"],
+  ["mo", "m"],
+  ["tu", "t"],
+  ["we", "w"],
+  ["th", "t"],
+  ["fr", "f"],
+  ["sa", "s"],
+];
+
+date.format("MMMM MMM"); //nov n
+date.format("dddd ddd"); //mo m
+
+console.log(date.month);
+
+/**
+ *{
+ * length: 30,
+ * name: 'nov',
+ * shortName: 'n',
+ * index: 10,
+ * number: 11,
+ * toString: [Function (anonymous)]
+ *}
+ */
+
+console.log(date.weekDay);
+
+/**
+ *{
+ * index: 1,
+ * number: 2,
+ * toString: [Function: toString],
+ * name: 'mo',
+ * shortName: 'm'
+ *}
+ */
+```
+
+## 4-12- other methods
 
 ```javascript
 var date = new DateObject();
@@ -490,7 +607,7 @@ JSON.stringify(dateObject);
 new DateObject(date.toJSON()).format(); //2020/12/27
 ```
 
-# using calendars, format & locals
+# 4-13- using calendars, format & locals
 
 ```javascript
 var date = new DateObject({ calendar: "gregorian", format: "dddd DD MMMM" });
@@ -509,34 +626,36 @@ date.convert("persian").format(); //1399/05/31
 date.convert("arabic").format(); //1442/01/02
 ```
 
-# format types
+# 5- format types
 
-| Type |       Example       |          Description          | Availability (Parse /Format) |
-| ---- | :-----------------: | :---------------------------: | ---------------------------- |
-| YYYY |        2020         |           full year           | both                         |
-| YY   |         20          |         2 digits year         | both                         |
-| MMMM |      December       |          month name           | both                         |
-| MMM  |         Dec         |       month short name        | both                         |
-| MM   |   03, 09, 10, ...   |     2 digits month number     | both                         |
-| M    |    3, 9, 10, ...    |         month number          | both                         |
-| DDDD |         09          |          day of year          | format                       |
-| DDD  |          9          |          day of year          | format                       |
-| DD   | 03, 09, 10, 17, ... |     2 digits day of month     | both                         |
-| D    |    3, 9 ,10, 17     |         day of month          | both                         |
-| WW   |    week of year     |      01, 03, 24, 33, ...      | format                       |
-| W    |    week of year     |       1, 3, 24. 33, ...       | format                       |
-| dddd |    week day name    | Saturday, Sunday, Monday, ... | format                       |
-| ddd  | week day short name |      Sat, Sun, Mon, ...       | format                       |
-| HH   | 03, 09, 10, 17,...  | 2 digits hour (24 hour mode)  | both                         |
-| H    |  3, 9, 10, 17,...   |      hour (24 hour mode)      | both                         |
-| hh   | 03, 09, 10, 17,...  | 2 digits hour (12 hour mode)  | both                         |
-| h    |  3, 9, 10, 17,...   |      hour (12 hour mode)      | both                         |
-| mm   | 03, 09, 10, 17,...  |        2 digits minute        | both                         |
-| m    |  3, 9, 10, 17,...   |            minute             | both                         |
-| ss   | 03, 09, 10, 17,...  |        2 digits second        | both                         |
-| s    |  3, 9, 10, 17,...   |            second             | both                         |
-| SSS  |         100         |     3 digits millisecond      | both                         |
-| SS   |         10          |     2 digits millisecond      | both                         |
-| S    |          1          |      1 digit millisecond      | both                         |
-| A    |         AM          |           meridiem            | both                         |
-| a    |         am          |      meridiem lowercase       | both                         |
+| Type |            Example            |         Description          | Availability (Parse /Format) |
+| ---- | :---------------------------: | :--------------------------: | ---------------------------- |
+| YYYY |             2020              |          full year           | both                         |
+| YY   |              20               |        2 digits year         | both                         |
+| MMMM |           December            |          month name          | both                         |
+| MMM  |              Dec              |       month short name       | both                         |
+| MM   |        03, 09, 10, ...        |    2 digits month number     | both                         |
+| M    |         3, 9, 10, ...         |         month number         | both                         |
+| DDDD |              09               |         day of year          | format                       |
+| DDD  |               9               |         day of year          | format                       |
+| DD   |      03, 09, 10, 17, ...      |    2 digits day of month     | both                         |
+| D    |         3, 9 ,10, 17          |         day of month         | both                         |
+| WW   |      01, 03, 24, 33, ...      |         week of year         | format                       |
+| W    |       1, 3, 24. 33, ...       |         week of year         | format                       |
+| dddd | Saturday, Sunday, Monday, ... |        week day name         | format                       |
+| ddd  |      Sat, Sun, Mon, ...       |     week day short name      | format                       |
+| dd   |         01,02,...,07          |   2 digits week day number   | format                       |
+| d    |           1,2,...,7           |       week day number        | format                       |
+| HH   |      03, 09, 10, 17,...       | 2 digits hour (24 hour mode) | both                         |
+| H    |       3, 9, 10, 17,...        |     hour (24 hour mode)      | both                         |
+| hh   |      03, 09, 10, 17,...       | 2 digits hour (12 hour mode) | both                         |
+| h    |       3, 9, 10, 17,...        |     hour (12 hour mode)      | both                         |
+| mm   |      03, 09, 10, 17,...       |       2 digits minute        | both                         |
+| m    |       3, 9, 10, 17,...        |            minute            | both                         |
+| ss   |      03, 09, 10, 17,...       |       2 digits second        | both                         |
+| s    |       3, 9, 10, 17,...        |            second            | both                         |
+| SSS  |              100              |     3 digits millisecond     | both                         |
+| SS   |              10               |     2 digits millisecond     | both                         |
+| S    |               1               |     1 digit millisecond      | both                         |
+| A    |              AM               |           meridiem           | both                         |
+| a    |              am               |      meridiem lowercase      | both                         |
