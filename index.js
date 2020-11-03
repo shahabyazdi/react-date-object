@@ -1,3 +1,3 @@
 import DateObject from "date-object"
 
-export default DateObject
+export default DateObject 

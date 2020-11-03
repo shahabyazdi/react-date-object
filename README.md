@@ -25,7 +25,7 @@ yarn add react-date-object
 # 2- Usage
 
 ```javascript
-var DateObject = require("date-object");
+var DateObject = require("react-date-object");
 
 var dateObject = new DateObject();
 ```
@@ -214,7 +214,7 @@ date.convert(DateObject.calendars.GREGORIAN); //2020/10/31 or date.convert()
 ## 4-3- format(token:String)
 
 default format is YYYY/MM/DD
-to see all format types click [here](#-5--format-types)
+to see all format types click [here](#5--format-types)
 
 ```javascript
 var date = new DateObject();
@@ -460,13 +460,13 @@ date.set(new DateObject().toObject()); //2020/10/31
 ## 4-10- toUTC()
 
 ```javascript
-let date = new Date() //Wed Oct 14 2020 11:12:18 GMT+0330
+let date = new Date(); //Wed Oct 14 2020 11:12:18 GMT+0330
 
 let dateObject = new DateObject({
-    date,
-    calendar: "arabic",
-    format: "ddd, DD MMM YYYY HH:mm:ss"
-}) //Arb, 26 Sa 1442 11:12:18
+  date,
+  calendar: "arabic",
+  format: "ddd, DD MMM YYYY HH:mm:ss",
+}); //Arb, 26 Sa 1442 11:12:18
 
 console.log(`
 dateUTC      : ${date.toUTCString()}
@@ -478,13 +478,12 @@ gregorianUTC : ${dateObject.convert().toString()}
  * dateUTC      : Wed, 14 Oct 2020 07:42:18 GMT
  * arabicUTC    : Arb, 26 Sa 1442 07:42:18
  * gregorianUTC : Wed, 14 Oct 2020 07:42:18
- *  /
-
+ */
 ```
 
 ## 4-11- custom months & week days
 
-See the example below in case you want to use your personal names instead default names of months and week days
+See the example below in case you want to use your personal names instead of default names of months and week days
 
 ```javascript
 var date = new DateObject();
@@ -492,10 +491,8 @@ var date = new DateObject();
 date.format("MMMM MMM"); //November Nov
 date.format("dddd ddd"); //Monday Mon
 
-//follow this method to name the months and week days: [["name1","shortName1"],["name2","shortName2"],...]
-
 date.months = [
-  ["jan", "j"],
+  ["jan", "j"], //[["name","shortName"], ... ]
   ["feb", "f"],
   ["mar", "m"],
   ["apr", "a"],
@@ -510,7 +507,7 @@ date.months = [
 ];
 
 date.weekDays = [
-  ["su", "s"],
+  ["su", "s"], //[["name","shortName"], ... ]
   ["mo", "m"],
   ["tu", "t"],
   ["we", "w"],
@@ -547,6 +544,8 @@ console.log(date.weekDay);
  *}
  */
 ```
+
+You can use `date.setMonths(months).setWeekDays(weekDays)` as well
 
 ## 4-12- other methods
 
