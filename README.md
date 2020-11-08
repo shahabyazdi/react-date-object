@@ -71,15 +71,15 @@ date.format("YYYY/MM/DD hh:mm:ss.SSS a"); //2020/08/21 11:55:36.100 am
 
 date = new DateObject("2020/08/01");
 
-date.format("YYYY/MM/DD hh:mm:ss.SSS a"); //2020/08/01 12:00:00.0 am
+date.format("YYYY/MM/DD hh:mm:ss.SSS a"); //2020/08/01 12:00:00.000 am
 ```
 
-### 4-1-2- Number (unix timestamp)
+### 4-1-2- Number (unix time in milliseconds)
 
 ```javascript
-var date = new DateObject(1597994736);
+var date = new DateObject(1597994736000);
 
-date.format("dddd DD MMMM @ hh:mm:ss.SSS a"); //Friday 21 August @ 11:55:36.0 am
+date.format("dddd DD MMMM @ hh:mm:ss.SSS a"); //Friday 21 August @ 11:55:36.000 am
 ```
 
 ### 4-1-3- JavaScript Date
@@ -108,7 +108,7 @@ date.format(); //2019/09/20
 
 ```javascript
 {
-  date: String , Number(unix timestamp), JavaScript Date or DateObject, //default new Date()
+  date: String , Number(unix time in milliseconds), JavaScript Date or DateObject, //default new Date()
   calendar: `gregorian`, `persian` or `arabic`, //default `gregorian`
   local: `en`, `fa` or `ar`, //default `en`
   format: `String` //default `YYYY/MM/DD`
@@ -325,7 +325,7 @@ date.dayOfBeginning; //737658
 date.dayOfYear; //234
 date.daysLeft; //132
 date.weekOfYear; //34
-date.unix; //1597951800
+date.unix; //1597951800 (unix time in seconds)
 
 date.weekDays; // array [{ name: 'Sunday', shortName: 'Sun', ...}]
 date.months; //array [{ name: 'January', shortName: 'Jan', ...}]
@@ -563,9 +563,8 @@ date.toLastWeekOfYear(); //2020/12/27
 
 date.toString(); //2020/12/27
 date.toDate(); //instanceof Date
-date.toUnix(); //1609054714
+date.toUnix(); //1609054714 (unix time in seconds)
 date.toJulianDay(); //2459210
-date.valueOf(); //737786, same as dayOfBeginning()
 date.toObject();
 /**
  *{
@@ -589,24 +588,43 @@ date.toObject();
  *    hour: 11,
  *    minute: 8,
  *    second: 34,
- *    millisecond: 0,
+ *    millisecond: 724,
  *    weekOfYear: 52,
  *    dayOfYear: 362,
  *    daysLeft: 4,
  *    calendar: 'gregorian',
- *    local: 'en'
+ *    local: 'en',
+ *    format: 'YYYY/MM/DD'
  *}
  */
 
 date.toJSON(); //same as toObject()
 
 JSON.stringify(dateObject);
-//{"year":2020,"month":{"length":31,"name":"December","shortName":"Dec","index":11,"number":12},"day":27,"weekDay":{"index":0,"number":1,"name":"Sunday","shortName":"Sun"},"hour":0,"minute":0,"second":0,"millisecond":0,"weekOfYear":52,"dayOfYear":362,"daysLeft":4,"calendar":"gregorian","local":"en"}
+//{"year":2020,"month":{"length":31,"name":"December","shortName":"Dec","index":11,"number":12},"day":27,"weekDay":{"index":0,"number":1,"name":"Sunday","shortName":"Sun"},"hour":11,"minute":8,"second":34,"millisecond":724,"weekOfYear":52,"dayOfYear":362,"daysLeft":4,"calendar":"gregorian","local":"en","format":"YYYY/MM/DD"}
 
 new DateObject(date.toJSON()).format(); //2020/12/27
 ```
 
-# 4-13- using calendars, format & locals
+## 4-13 valueOf()
+
+returns unix time in milliseconds
+
+```javascript
+var gregorian = new DateObject();
+var persian = new DateObject({ date: gregorian, calendar: "persian" });
+var arabic = new DateObject({ date: gregorian, calendar: "arabic" });
+var indian = new DateObject({ date: gregorian, calendar: "indian" });
+
+console.log(gregorian.valueOf(), gregorian.format()); //1604824018304 2020/11/08
+console.log(persian.valueOf(), persian.format()); //1604824018304 1399/08/18
+console.log(indian.valueOf(), indian.format()); //1604824018304 1942/08/17
+console.log(arabic.valueOf(), arabic.format()); //1604824018304 1442/03/22
+
+console.log(persian - gregorian === 0); //true
+```
+
+## 4-14- using calendars, format & locals
 
 ```javascript
 var date = new DateObject({ calendar: "gregorian", format: "dddd DD MMMM" });
