@@ -226,6 +226,20 @@ date.format("dddd DD MMMM YYYY, hh:mm:ss A"); //Saturday 31 October 2020, 06:19:
 date.format("ddd DD MMM YYYY, hh:mm a"); //Sat 31 Oct 2020, 06:20 pm
 ```
 
+### formatting with ignore list:
+
+```javascript
+var date = new DateObject();
+
+date.format("hours:HH minutes:mm seconds:ss", ["hours", "minutes", "seconds"]); //hours:12 minutes:22 seconds:40
+date.format("it's HH o'clock", ["it's", "o'clock"]); //it's 12 o'clock
+date.format(`DD MMMM at hh:mm ${date.hour >= 12 ? "Afternoon" : "Morning"}`, [
+  "at",
+  "Afternoon",
+  "Morning",
+]); //11 November at 12:22 Afternoon
+```
+
 ## 4-4- setter methods
 
 ```javascript
