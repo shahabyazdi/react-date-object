@@ -25,7 +25,7 @@ yarn add react-date-object
 # 2- Usage
 
 ```javascript
-var DateObject = require("react-date-object");
+import DateObject from "react-date-object";
 
 var dateObject = new DateObject();
 ```
