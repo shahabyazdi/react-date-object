@@ -10,13 +10,15 @@ declare class DateObject {
         millisecond?:number,
         calendar?:string,
         local?:string,
-        format?:string
+        format?:string,
+        ignoreList?:string[]
     })
     constructor(object:{
         date?:Date,
         calendar?:string,
         local?:string,
-        format?:string
+        format?:string,
+        ignoreList?:string[]
     })
     constructor(date:Date)
     constructor(date:DateObject)
@@ -28,6 +30,7 @@ declare class DateObject {
     /**
      * Parse string from the given formatting token.
      * Default formatting token: "YYYY MM DD hh mm ss SSS a".
+     * 
      * If you do not specify a formatting token, The default token is considered.
      * @param date 
      * @example 
@@ -38,7 +41,14 @@ declare class DateObject {
      */
     parse(date:string):DateObject
     /**
-     * Convert current calendar to given calendar
+     * Convert current calendar to given calendar.
+     * 
+     * Availble calendars:
+     *  - gregorian
+     *  - persian
+     *  - arabic
+     *  - indian
+     * 
      * @param calendar 
      * @example
      * var date = new DateObject();
@@ -48,7 +58,8 @@ declare class DateObject {
     convert(calendar:string|undefined): DateObject
     /**
      * Formatting current time from given token.
-     * Default token is "YYYY/MM/SS".
+     * Default token is "YYYY/MM/DD".
+     * 
      * If you do not specify a formatting token, The default token is considered.
      * @param format 
      * @param ignoreList 
@@ -59,6 +70,8 @@ declare class DateObject {
      * date.format("MM/DD/YYYY"); //12/02/2020
      * 
      * @example
+     * Ignoring `Date` & `Time`
+     * 
      * var date = new DateObject();
      * 
      * date.format("Date:MM/DD/YYYY Time:HH:mm:ss", ["Date", "Time"]); //Date:12/02/2020 Time:11:03:12
@@ -68,43 +81,91 @@ declare class DateObject {
 
     setYear(year:number):DateObject
     /**
-     * @set custom months 
-     * @example [["name1" , "shortName1"], ["name2" , "shortName2"] ...]
+     * Use this method if you want to specify the names of the months manually.
+     * 
+     * @param months 
+     * @example
+     * 
+     * var Date = new DateObject()
+     * 
+     * date.setMonths([
+     *  ["jan", "j"],
+     *  ["feb", "f"],
+     *  ["mar", "m"],
+     *  ["apr", "a"],
+     *  ["may", "m"],
+     *  ["jun", "j"],
+     *  ["jul", "j"],
+     *  ["aug", "a"],
+     *  ["sep", "s"],
+     *  ["oct", "o"],
+     *  ["nov", "n"],
+     *  ["dec", "d"],
+     * ])
+     * 
+     * date.format("MMMM MMM") //dec d
      */
     setMonths(months:[string[]]):DateObject
     setMonth(month:number):DateObject
     /**
-     * @set custom week days 
-     * @example [["name1" , "shortName1"], ["name2" , "shortName2"] ...]
+     * Use this method if you want to specify the names of week days manually.
+     * 
+     * @param weekDays 
+     * @example
+     * 
+     * var Date = new DateObject()
+     * 
+     * date.setWeekDays([
+     *  ["su", "s"],
+     *  ["mo", "m"],
+     *  ["tu", "t"],
+     *  ["we", "w"],
+     *  ["th", "t"],
+     *  ["fr", "f"],
+     *  ["sa", "s"],
+     * ])
+     * 
+     * date.format("dddd ddd") //su s
      */
     setWeekDays(weekDays:[string[]]):DateObject
     /**
-     * 
-     * @param day of month
+     * @param dayOfMonth
      */
     setDay(day:number):DateObject
     setHour(hour:number):DateObject
     setMinute(minute:number):DateObject
     setSecond(second:number):DateObject
     setMillisecond(millisecond:number):DateObject
+    /**
+     * 
+     * @param formattingToken
+     * @example
+     * var date = new DateObject()
+     * 
+     * date.setFormat("dddd MMMM YYYY")
+     * 
+     * date.format() //Sunday December 2020
+     */
     setFormat(format:string):DateObject
     /**
-     * @param local 
-     * @locals
-     * en,
-     * fa,
-     * hi,
-     * ar
+     * @param local
+     * 
+     * Availble locals:
+     *  - en `english`
+     *  - fa `farsi`
+     *  - ar `arabic`
+     *  - hi `hindi`
      */
     setLocal(local:string):DateObject
     /**
-     * convert current calendar to given calendar
-     * @param calendar 
-     * @calendars
-     * gregorian,
-     * persian,
-     * arabic,
-     * indian
+     * @param calendar
+     * 
+     * Availble calendars:
+     * 
+     *  - gregorian
+     *  - persian
+     *  - arabic
+     *  - indian
      */
     setCalendar(calendar:string|undefined):DateObject
     setDate(date:Date):DateObject
@@ -124,9 +185,26 @@ declare class DateObject {
         millisecond?:number,
         calendar?:string,
         local?:string,
-        format?:string
+        format?:string,
+        ignoreList?:string[]
     }):DateObject
-
+    /**
+     * Availbe Types:
+     *  - `years` `year` `y`
+     *  - `months` `month` `M`
+     *  - `days` `day` `d`
+     *  - `hours` `hour` `h`
+     *  - `minutes` `minute` `m`
+     *  - `seconds` `second` `s`
+     *  - `milliseconds` `millisecond` `ms`
+     * 
+     * @param duration 
+     * @param type 
+     * @example
+     * 
+     * var tomorrow = new DateObject().add(1, "day")
+     * var yesterday = new DateObject().add(-1, "day")
+     */
     add(duration:number|string,type:string):DateObject
 
     toFirstOfYear():DateObject
@@ -223,6 +301,26 @@ declare class DateObject {
      * @example [{ name: "January", shortName: "Jan", index: 0, number: 1 }, ...]
      * @set custom months 
      * @example [["name1" , "shortName1"], ["name2" , "shortName2"] ...]
+     * @example
+     * 
+     * var Date = new DateObject()
+     * 
+     * date.months = [
+     *  ["jan", "j"],
+     *  ["feb", "f"],
+     *  ["mar", "m"],
+     *  ["apr", "a"],
+     *  ["may", "m"],
+     *  ["jun", "j"],
+     *  ["jul", "j"],
+     *  ["aug", "a"],
+     *  ["sep", "s"],
+     *  ["oct", "o"],
+     *  ["nov", "n"],
+     *  ["dec", "d"],
+     * ]
+     * 
+     * date.format("MMMM MMM") //dec d
      */
     months:object[]
     /**
@@ -230,35 +328,74 @@ declare class DateObject {
      * @example [{ name: "Sunday", shortName: "Sun", index: 0, number: 1 }, ...]
      * @set custom week days 
      * @example [["name1" , "shortName1"], ["name2" , "shortName2"] ...]
+     * @example
+     * 
+     * var Date = new DateObject()
+     * 
+     * date.setWeekDays([
+     *  ["su", "s"],
+     *  ["mo", "m"],
+     *  ["tu", "t"],
+     *  ["we", "w"],
+     *  ["th", "t"],
+     *  ["fr", "f"],
+     *  ["sa", "s"],
+     * ])
+     * 
+     * date.format("dddd ddd") //su s
      */
     weekDays:object[]
     /**
      * Array of leap years until now
+     * 
+     * @example
+     * 
+     * var date = new DateObject()
+     * 
+     * date.leaps //[4, 8, 12, 16, 20, ...]
      */
     leaps:number[]
     /**
      * @get current calendar
      * @set calendar
-     * @calendars
-     * gregorian,
-     * persian,
-     * arabic,
-     * indian
+     * 
+     * Availble calendars:
+     *  - gregorian
+     *  - persian
+     *  - arabic
+     *  - indian
+     * 
+     * @default "gregorian"
+     * @example
+     * var date = new DateObject() //2020/12/06
+     * 
+     * date.calendar = "indian" //1942/09/15
      */
     calendar:string
     /**
      * @get current local
      * @set local
-     * @locals
-     * en,
-     * fa,
-     * ar,
-     * hi
+     * 
+     * Availble locals:
+     *  - en `english`
+     *  - fa `farsi`
+     *  - ar `arabic`
+     *  - hi `hindi`
+     * 
+     * @default "en"
+     * @example
+     * var date = new DateObject() //2020/12/06
+     * 
+     * date.local = "fa" //۲۰۲۰/۱۲/۰۶
      */
     local:string
     /**
      * @get meridiems in current local
-     * @example [{ name: "AM", shortName: "am" }, { name: "PM", shortName: "pm" }]
+     * @example 
+     * 
+     * var date = new DateObject()
+     * 
+     * date.meridiems //[{ name: "AM", shortName: "am" }, { name: "PM", shortName: "pm" }]
      */
     meridiems:object[]
     /**
@@ -268,7 +405,13 @@ declare class DateObject {
     /**
      * @get current formatting token
      * @set formatting token
-     * @default YYYY/MM/DD
+     * @default "YYYY/MM/DD"
+     * 
+     * var date = new DateObject()
+     * 
+     * date._format = "dddd MMMM YYYY"
+     * 
+     * date.format() //Sunday December 2020
      */
     _format:string
     /**
@@ -284,6 +427,27 @@ declare class DateObject {
      * @get Unix time in seconds
      */
     unix:number
+    /**
+     * formatting ignore list
+     * 
+     * @example
+     * var date = new DateObject()
+     * 
+     * date._format = "Date:MM/DD/YYYY"
+     * date.ignoreList = ["Date"]
+     * 
+     * date.format() //Date:12/04/2020
+     * 
+     * @example
+     * var date = new DateObject({
+     *   format: "Date:MM/DD/YYYY",
+     *   ignoreList: ["Date"]
+     * })
+     * 
+     * date.format() //Date:12/04/2020
+     * date.format("time:hh:mm a", ["time"]) //time:06:50 pm
+     */
+    ignoreList:string[]
 }
 
 export = DateObject
