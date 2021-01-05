@@ -3,7 +3,7 @@
 supported calendars: `gregorian` , `persian` , `arabic` , `indian`
 default: `gregorian`
 
-supported locals: `en` , `fa` , `ar` , `hi`
+supported locales: `en` , `fa` , `ar` , `hi`
 default: `en`
 
 NodeJs: [date-object](https://github.com/shahabyazdi/date-object)
@@ -45,9 +45,9 @@ returns supported calendars
 }
 ```
 
-## 3-2- locals
+## 3-2- locales
 
-returns supported locals
+returns supported locales
 
 ```javascript
 {
@@ -110,7 +110,7 @@ date.format(); //2019/09/20
 {
   date: String , Number(unix time in milliseconds), JavaScript Date or DateObject, //default new Date()
   calendar: `gregorian`, `persian` or `arabic`, //default `gregorian`
-  local: `en`, `fa` or `ar`, //default `en`
+  locale: `en`, `fa` or `ar`, //default `en`
   format: String, //default `YYYY/MM/DD`
   ignoreList:Array//If the format contained words that should be ignored
 }
@@ -121,7 +121,7 @@ date.format(); //2019/09/20
 var date = new DateObject({
   date: new Date(),
   calendar: "gregorian",
-  local: "en",
+  locale: "en",
 });
 
 date.format(); //2020/08/21
@@ -129,7 +129,7 @@ date.format(); //2020/08/21
 date = new DateObject({
   date: new Date(),
   calendar: "persian",
-  local: "fa",
+  locale: "fa",
 });
 
 date.format(); //۱۳۹۹/۰۵/۳۱
@@ -137,7 +137,7 @@ date.format(); //۱۳۹۹/۰۵/۳۱
 date = new DateObject({
   date: "31 Mordad 1399",
   calendar: "persian",
-  local: "en",
+  locale: "en",
   format: "DD MMMM YYYY",
 });
 
@@ -156,7 +156,7 @@ date.format(); //31 Mordad 1399
   second: Number, //default 0
   millisecond: Number, //default 0
   calendar: `gregorian`, `persian` or `arabic`, //default `gregorian`
-  local: `en`, `fa` or `ar`, //default `en`
+  locale: `en`, `fa` or `ar`, //default `en`
   format: String, //default `YYYY/MM/DD`
   ignoreList:Array//If the format contained words that should be ignored
 }
@@ -182,7 +182,7 @@ date = new DateObject({
   month: 5,
   day: 31,
   calendar: "persian",
-  local: "en",
+  locale: "en",
   format: "dddd DD MMMM YYYY",
 });
 
@@ -193,7 +193,7 @@ date = new DateObject({
   month: 5,
   day: 31,
   calendar: "persian",
-  local: "fa",
+  locale: "fa",
   format: "dddd DD MMMM YYYY",
 });
 
@@ -215,7 +215,7 @@ date.convert(DateObject.calendars.GREGORIAN); //2020/10/31 or date.convert()
 
 ## 4-3- format(token:String)
 
-default format is YYYY/MM/DD
+default format is YYYY/MM/DD.
 to see all format types click [here](#5--format-types)
 
 ```javascript
@@ -250,7 +250,7 @@ var date = new DateObject();
 date
   .setCalendar("gregorian")
   .setFormat("YYYY-MM-DD HH:mm:ss.SSS")
-  .setLocal("en")
+  .setLocale("en")
   .setYear(2020)
   .setMonth(8)
   .setDay(21)
@@ -376,7 +376,7 @@ date.format("dddd DD MMMM @ hh:mm a"); //Doshanbeh 03 Shahrivar @ 12:32 am
 let date = new DateObject({
   calendar: "arabic",
   date: "1442/01/01",
-  local: "ar",
+  locale: "ar",
 });
 
 date.getProperty("M"); //1
@@ -458,8 +458,8 @@ date.set("month", 1); //2021/01/31
 date.set("day", 7); //2021/01/07
 date.set("format", "MM/DD/YYYY"); //01/07/2021
 date.set("calendar", "indian"); //10/17/1942
-date.set("local", "hi"); //१०/१७/१९४२
-date.set("date", new DateObject({ calendar: "persian", local: "en" })); //1399/08/10
+date.set("locale", "hi"); //१०/१७/१९४२
+date.set("date", new DateObject({ calendar: "persian", locale: "en" })); //1399/08/10
 date.set("date", new Date()); //2020/10/31 (calendar is set to gregorian)
 ```
 
@@ -498,15 +498,16 @@ gregorianUTC : ${dateObject.convert().toString()}
  */
 ```
 
-## 4-11- custom months & week days
+## 4-11- custom months, week days & digits
 
-See the example below in case you want to use your personal names instead of default names of months and week days
+See the example below in case you want to use your personal data instead of default months, week days & digits
 
 ```javascript
 var date = new DateObject();
 
 date.format("MMMM MMM"); //November Nov
 date.format("dddd ddd"); //Monday Mon
+date.format("D"); //2
 
 date.months = [
   ["jan", "j"], //[["name","shortName"], ... ]
@@ -533,8 +534,15 @@ date.weekDays = [
   ["sa", "s"],
 ];
 
+/**
+ * This is just a test to display digits.
+ * The Greek number system does not work like this.
+ */
+date.digits = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+
 date.format("MMMM MMM"); //nov n
 date.format("dddd ddd"); //mo m
+date.format("D"); //II
 
 console.log(date.month);
 
@@ -560,9 +568,20 @@ console.log(date.weekDay);
  * shortName: 'm'
  *}
  */
+
+console.log(date.digits);
+
+/**
+ * [
+ *  '',    'I',   'II',
+ *  'III', 'IV',  'V',
+ *  'VI',  'VII', 'VIII',
+ *  'IX'
+ * ]
+ */
 ```
 
-You can use `date.setMonths(months).setWeekDays(weekDays)` as well
+You can use `date.setMonths(months).setWeekDays(weekDays).setDigits(digits)` as well
 
 ## 4-12- other methods
 
@@ -610,7 +629,7 @@ date.toObject();
  *    dayOfYear: 362,
  *    daysLeft: 4,
  *    calendar: 'gregorian',
- *    local: 'en',
+ *    locale: 'en',
  *    format: 'YYYY/MM/DD'
  *}
  */
@@ -618,7 +637,7 @@ date.toObject();
 date.toJSON(); //same as toObject()
 
 JSON.stringify(dateObject);
-//{"year":2020,"month":{"length":31,"name":"December","shortName":"Dec","index":11,"number":12},"day":27,"weekDay":{"index":0,"number":1,"name":"Sunday","shortName":"Sun"},"hour":11,"minute":8,"second":34,"millisecond":724,"weekOfYear":52,"dayOfYear":362,"daysLeft":4,"calendar":"gregorian","local":"en","format":"YYYY/MM/DD"}
+//{"year":2020,"month":{"length":31,"name":"December","shortName":"Dec","index":11,"number":12},"day":27,"weekDay":{"index":0,"number":1,"name":"Sunday","shortName":"Sun"},"hour":11,"minute":8,"second":34,"millisecond":724,"weekOfYear":52,"dayOfYear":362,"daysLeft":4,"calendar":"gregorian","locale":"en","format":"YYYY/MM/DD"}
 
 new DateObject(date.toJSON()).format(); //2020/12/27
 ```
@@ -641,7 +660,7 @@ console.log(arabic.valueOf(), arabic.format()); //1604824018304 1442/03/22
 console.log(persian - gregorian === 0); //true
 ```
 
-## 4-14- using calendars, format & locals
+## 4-14- using calendars, format & locales
 
 ```javascript
 var date = new DateObject({ calendar: "gregorian", format: "dddd DD MMMM" });
@@ -649,10 +668,10 @@ var date = new DateObject({ calendar: "gregorian", format: "dddd DD MMMM" });
 date.format(); //Friday 21 August
 
 date.calendar = "persian"; //Jomeh 31 Mordad
-date.local = "fa"; //جمعه 31 مرداد
+date.locale = "fa"; //جمعه 31 مرداد
 date._format = "YY/MM/DD"; //۹۹/۰۵/۳۱
 
-date.setCalendar("gregorian").setLocal("en"); //20/08/21
+date.setCalendar("gregorian").setLocale("en"); //20/08/21
 
 date = new DateObject(new Date());
 

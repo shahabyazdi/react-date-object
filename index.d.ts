@@ -9,14 +9,14 @@ declare class DateObject {
         second?:number,
         millisecond?:number,
         calendar?:string,
-        local?:string,
+        locale?:string,
         format?:string,
         ignoreList?:string[]
     })
     constructor(object:{
         date?:Date,
         calendar?:string,
-        local?:string,
+        locale?:string,
         format?:string,
         ignoreList?:string[]
     })
@@ -26,7 +26,7 @@ declare class DateObject {
     constructor(string:string)
 
     static calendars:object
-    static locals:object
+    static locales:object
     /**
      * Parse string from the given formatting token.
      * Default formatting token: "YYYY MM DD hh mm ss SSS a".
@@ -128,6 +128,7 @@ declare class DateObject {
      * date.format("dddd ddd") //su s
      */
     setWeekDays(weekDays:[string[]]):DateObject
+    setDigits(digits:string[]):DateObject
     /**
      * @param dayOfMonth
      */
@@ -148,15 +149,15 @@ declare class DateObject {
      */
     setFormat(format:string):DateObject
     /**
-     * @param local
+     * @param locale
      * 
-     * Availble locals:
+     * Availble locales:
      *  - en `english`
      *  - fa `farsi`
      *  - ar `arabic`
      *  - hi `hindi`
      */
-    setLocal(local:string):DateObject
+    setLocale(locale:string):DateObject
     /**
      * @param calendar
      * 
@@ -178,15 +179,18 @@ declare class DateObject {
         date?:Date|number|string,
         year?:number,
         month?:number,
+        months?:[string[]],
+        weekdays?:[string[]],
         day?:number,
         hour?:number,
         minute?:number,
         second?:number,
         millisecond?:number,
         calendar?:string,
-        local?:string,
+        locale?:string,
         format?:string,
-        ignoreList?:string[]
+        ignoreList?:string[],
+        digits?:string[]
     }):DateObject
     /**
      * Availbe Types:
@@ -259,7 +263,7 @@ declare class DateObject {
      */
     year:number
     /**
-     * @get object (Month of year in current local) 
+     * @get object (Month of year in current locale) 
      * @example { name: "January", shortName: "Jan", index: 0, number: 1 }
      * @set number 1-12
      */
@@ -271,7 +275,7 @@ declare class DateObject {
      */
     day:number
     /**
-     * Day of week in current local
+     * Day of week in current locale
      * @get object 
      * @example { name: "Sunday", shortName: "Sun", index: 0, number: 1  }
      */
@@ -297,7 +301,7 @@ declare class DateObject {
      */
     millisecond:number
     /**
-     * @get Array of months in current local 
+     * @get Array of months in current locale 
      * @example [{ name: "January", shortName: "Jan", index: 0, number: 1 }, ...]
      * @set custom months 
      * @example [["name1" , "shortName1"], ["name2" , "shortName2"] ...]
@@ -324,7 +328,7 @@ declare class DateObject {
      */
     months:object[]
     /**
-     * @get Array of week days in current local 
+     * @get Array of week days in current locale 
      * @example [{ name: "Sunday", shortName: "Sun", index: 0, number: 1 }, ...]
      * @set custom week days 
      * @example [["name1" , "shortName1"], ["name2" , "shortName2"] ...]
@@ -373,10 +377,10 @@ declare class DateObject {
      */
     calendar:string
     /**
-     * @get current local
-     * @set local
+     * @get current locale
+     * @set locale
      * 
-     * Availble locals:
+     * Availble locales:
      *  - en `english`
      *  - fa `farsi`
      *  - ar `arabic`
@@ -386,11 +390,11 @@ declare class DateObject {
      * @example
      * var date = new DateObject() //2020/12/06
      * 
-     * date.local = "fa" //۲۰۲۰/۱۲/۰۶
+     * date.locale = "fa" //۲۰۲۰/۱۲/۰۶
      */
-    local:string
+    locale:string
     /**
-     * @get meridiems in current local
+     * @get meridiems in current locale
      * @example 
      * 
      * var date = new DateObject()
@@ -399,9 +403,9 @@ declare class DateObject {
      */
     meridiems:object[]
     /**
-     * Array of local numbers from 0 to 9
+     * Array of locale numbers from 0 to 9
      */
-    digits:number[]
+    digits:string[]
     /**
      * @get current formatting token
      * @set formatting token
