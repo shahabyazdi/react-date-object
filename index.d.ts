@@ -25,8 +25,8 @@ declare class DateObject {
     constructor(unixTimeInMilliseconds:number)
     constructor(string:string)
 
-    static calendars:object
-    static locales:object
+    static calendars: { gregorian:string, persian:string, arabic:string, indian:string }
+    static locales: { en:string, fa:string, ar:string, hi:string }
     /**
      * Parse string from the given formatting token.
      * Default formatting token: "YYYY MM DD hh mm ss SSS a".
@@ -207,9 +207,25 @@ declare class DateObject {
      * @example
      * 
      * var tomorrow = new DateObject().add(1, "day")
-     * var yesterday = new DateObject().add(-1, "day")
      */
     add(duration:number|string,type:string):DateObject
+    /**
+     * Availbe Types:
+     *  - `years` `year` `y`
+     *  - `months` `month` `M`
+     *  - `days` `day` `d`
+     *  - `hours` `hour` `h`
+     *  - `minutes` `minute` `m`
+     *  - `seconds` `second` `s`
+     *  - `milliseconds` `millisecond` `ms`
+     * 
+     * @param duration 
+     * @param type 
+     * @example
+     * 
+     * var yesterday = new DateObject().subtract(1, "day")
+     */
+    subtract(duration:number|string,type:string):DateObject
 
     toFirstOfYear():DateObject
     toLastOfYear():DateObject

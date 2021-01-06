@@ -319,7 +319,9 @@ console.log(date.weekDay);
  * }
  */
 
-console.log(`${date.weekDay.name} ${date.year}/${date.month}/${date.day}`); //Sunday 2022/10/23
+var { year, month, weekDay, day } = date;
+
+console.log(`${weekDay.name} ${year}/${month}/${day}`); //Sunday 2022/10/23
 
 date.year = 2020;
 date.month = 8;
@@ -440,15 +442,62 @@ date.setFormat("YYYY/MM/DD hh:mm:ss.SSS");
 date.add(2, "years").format(); //2022/10/07 05:35:24.000
 date.add("1", "month").format(); //2022/11/07 05:35:24.000
 date.add(3, "d").format(); //2022/11/10 05:35:24.000
-date.add(-4, "hours").format(); //2022/11/10 01:35:24.000
-date.add(1, "minute").format(); //2022/11/10 01:36:24.000
-date.add("-20", "s").format(); //2022/11/10 01:36:04.000
-date.add(100, "milliseconds").format(); //2022/11/10 01:36:04.100
+date.add(4, "hours").format(); //2022/11/10 09:35:24.000
+date.add(1, "minute").format(); //2022/11/10 09:36:24.000
+date.add("20", "s").format(); //2022/11/10 09:36:44.000
+date.add(100, "milliseconds").format(); //2022/11/10 09:36:44.100
 ```
 
-## 4-9- set method
+## 4-9- subtract(duration:Number or String,type:String)
 
-### 4-9-1 set(key:String,value:Any)
+<table>
+  <tr>
+    <th colspan="3">Types</td>
+  </tr>
+  <tr>
+    <td>years</td>
+    <td>year</td>
+    <td>y</td>
+  </tr>
+  <tr>
+    <td>months</td>
+    <td>month</td>
+    <td>M</td>
+  </tr>
+  <tr>
+    <td>days</td>
+    <td>day</td>
+    <td>d</td>
+  </tr>
+  <tr>
+    <td>hours</td>
+    <td>hour</td>
+    <td>h</td>
+  </tr>
+  <tr>
+    <td>minutes</td>
+    <td>minute</td>
+    <td>m</td>
+  </tr>
+  <tr>
+    <td>seconds</td>
+    <td>second</td>
+    <td>s</td>
+  </tr>
+  <tr>
+    <td>milliseconds</td>
+    <td>millisecond</td>
+    <td>ms</td>
+  </tr>
+</table>
+
+```javascript
+var yesterday = new DateObject().subtract(1, "day");
+```
+
+## 4-10- set method
+
+### 4-10-1 set(key:String,value:Any)
 
 ```javascript
 var date = new DateObject(); //2020/10/31
@@ -463,7 +512,7 @@ date.set("date", new DateObject({ calendar: "persian", locale: "en" })); //1399/
 date.set("date", new Date()); //2020/10/31 (calendar is set to gregorian)
 ```
 
-### 4-9-2 set(object)
+### 4-10-2 set(object)
 
 ```javascript
 var date = new DateObject(); //2020/10/31
@@ -474,7 +523,7 @@ date.set(new DateObject().toObject()); //2020/10/31
 date.set({ format: "Date:MM/DD/YYYY", ignoreList: ["Date"] }).format(); //Date:10/31/2020
 ```
 
-## 4-10- toUTC()
+## 4-11- toUTC()
 
 ```javascript
 let date = new Date(); //Wed Oct 14 2020 11:12:18 GMT+0330
@@ -498,7 +547,7 @@ gregorianUTC : ${dateObject.convert().toString()}
  */
 ```
 
-## 4-11- custom months, week days & digits
+## 4-12- custom months, week days & digits
 
 See the example below in case you want to use your personal data instead of default months, week days & digits
 
@@ -583,7 +632,7 @@ console.log(date.digits);
 
 You can use `date.setMonths(months).setWeekDays(weekDays).setDigits(digits)` as well
 
-## 4-12- other methods
+## 4-13- other methods
 
 ```javascript
 var date = new DateObject();
@@ -642,7 +691,7 @@ JSON.stringify(dateObject);
 new DateObject(date.toJSON()).format(); //2020/12/27
 ```
 
-## 4-13 valueOf()
+## 4-14 valueOf()
 
 returns unix time in milliseconds
 
@@ -660,7 +709,7 @@ console.log(arabic.valueOf(), arabic.format()); //1604824018304 1442/03/22
 console.log(persian - gregorian === 0); //true
 ```
 
-## 4-14- using calendars, format & locales
+## 4-15- using calendars, format & locales
 
 ```javascript
 var date = new DateObject({ calendar: "gregorian", format: "dddd DD MMMM" });
