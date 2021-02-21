@@ -109,8 +109,8 @@ date.format(); //2019/09/20
 ```javascript
 {
   date: String , Number(unix time in milliseconds), JavaScript Date or DateObject, //default new Date()
-  calendar: `gregorian`, `persian` or `arabic`, //default `gregorian`
-  locale: `en`, `fa` or `ar`, //default `en`
+  calendar: `gregorian`, `persian`, `arabic` or `indian`, //default `gregorian`
+  locale: `en`, `fa`, `ar` or `hi`, //default `en`
   format: String, //default `YYYY/MM/DD`
   ignoreList:Array//If the format contained words that should be ignored
 }
@@ -155,8 +155,8 @@ date.format(); //31 Mordad 1399
   minute: Number, //default 0
   second: Number, //default 0
   millisecond: Number, //default 0
-  calendar: `gregorian`, `persian` or `arabic`, //default `gregorian`
-  locale: `en`, `fa` or `ar`, //default `en`
+  calendar: `gregorian`, `persian`, `arabic` or `indian`, //default `gregorian`
+  locale: `en`, `fa`, `ar` or `hi`, //default `en`
   format: String, //default `YYYY/MM/DD`
   ignoreList:Array//If the format contained words that should be ignored
 }
