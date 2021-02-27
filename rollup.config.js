@@ -21,7 +21,7 @@ export default {
       exports: "named"
     },
     {
-      file: "dist/index.js",
+      file: "dist/index.module.js",
       format: "es",
       plugins: [
         getBabelOutputPlugin({
