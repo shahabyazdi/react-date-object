@@ -1,19 +1,21 @@
 type Calendar = "gregorian" | "persian" | "arabic" | "indian";
 type Locale = "en" | "fa" | "ar" | "hi";
 type DateType = Date | number | string | DateObject;
-type NameType = {
+type Month = {
   name: string;
   shortName: string;
   number: number;
   index: number;
+  length: number;
   valueOf(): number;
   toString(): string;
 };
+type WeekDay = Omit<Month, "length">;
 type ObjectType = {
   year: number | undefined;
-  month: NameType | undefined;
+  month: Month | undefined;
   day: number | undefined;
-  weekDay: NameType | undefined;
+  weekDay: WeekDay | undefined;
   hour: number | undefined;
   minute: number | undefined;
   second: number | undefined;
@@ -285,8 +287,13 @@ declare class DateObject {
    * Unix time in milliseconds
    */
   valueOf(): number;
-
   /**
+   * Count number of days passed from 1/1/1 (0/1/1 in indian calendar)
+   */
+  toDays(): number;
+  /**
+   * @deprecated
+   * use toDays() instead.
    * Count number of days passed from 1/1/1 (0/1/1 in indian calendar)
    */
   dayOfBeginning: number;
@@ -312,7 +319,7 @@ declare class DateObject {
    * @example { name: "January", shortName: "Jan", index: 0, number: 1 }
    * @set number 1-12
    */
-  get month(): NameType;
+  get month(): Month;
   // set month(month: number);
   /**
    * Day of month
@@ -325,7 +332,7 @@ declare class DateObject {
    * @get object
    * @example { name: "Sunday", shortName: "Sun", index: 0, number: 1  }
    */
-  get weekDay(): NameType;
+  get weekDay(): WeekDay;
   /**
    * @get current hour
    * @set hour
@@ -372,8 +379,8 @@ declare class DateObject {
    *
    * date.format("MMMM MMM") //dec d
    */
-  get months(): NameType[];
-  // set months(months: string[]);
+  get months(): Month[];
+  // set months(months: [string[]]);
   /**
    * @get Array of week days in current locale
    * @example [{ name: "Sunday", shortName: "Sun", index: 0, number: 1 }, ...]
@@ -395,8 +402,8 @@ declare class DateObject {
    *
    * date.format("dddd ddd") //su s
    */
-  get weekDays(): NameType;
-  // set weekDays(weekDays: NameType[]);
+  get weekDays(): WeekDay[];
+  // set weekDays(weekDays: [string[]]);
   /**
    * Array of leap years until now
    *
