@@ -1,3 +1,1 @@
-import DateObject from "date-object"
-
-export default DateObject 
+export { default as DateObject } from "date-object";
