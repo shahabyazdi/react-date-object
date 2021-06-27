@@ -41,6 +41,7 @@ declare module "react-date-object" {
   };
 
   export type Locale = {
+    name: string;
     months: [string[]];
     weekDays: [string[]];
     digits: string[];
