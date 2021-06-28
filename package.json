@@ -1,6 +1,6 @@
 {
   "name": "react-date-object",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "JavaScript library for working with Date and Time in different calendars and locals",
   "main": "./dist/index.js",
   "module": "./dist/index.module.js",

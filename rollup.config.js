@@ -7,7 +7,6 @@ import { getBabelOutputPlugin } from "@rollup/plugin-babel";
 export default [
   {
     input: "./node_modules/date-object/dist/cjs/date-object.es6.js",
-    input: "index.js",
     output: [
       {
         file: "dist/index.js",
