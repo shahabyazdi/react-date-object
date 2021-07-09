@@ -39,11 +39,11 @@ export default [
     ],
     plugins: [resolve(), commonjs()],
   },
-  ...get("calendars"),
-  ...get("locales"),
+  ...build("calendars"),
+  ...build("locales"),
 ];
 
-function get(path) {
+function build(path) {
   const nodePath = `./node_modules/date-object/${path}`;
   const array = fs
     .readdirSync(`${nodePath}/cjs`)
