@@ -331,6 +331,7 @@ declare class DateObject {
    */
   get month(): Month;
   // set month(month: number);
+  get monthIndex(): number;
   /**
    * Day of month
    * @get number
