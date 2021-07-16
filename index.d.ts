@@ -504,126 +504,168 @@ declare module "react-date-object" {
 }
 
 declare module "react-date-object/calendars/gregorian" {
+  import type { Calendar } from "react-date-object";
+
   const gregorian: Calendar;
 
   export default gregorian;
 }
 
 declare module "react-date-object/calendars/persian" {
+  import type { Calendar } from "react-date-object";
+
   const persian: Omit<Calendar, "leapsLength">;
 
   export default persian;
 }
 
 declare module "react-date-object/calendars/jalali" {
+  import type { Calendar } from "react-date-object";
+
   const jalali: Calendar;
 
   export default jalali;
 }
 
 declare module "react-date-object/calendars/arabic" {
+  import type { Calendar } from "react-date-object";
+
   const arabic: Calendar;
 
   export default arabic;
 }
 
 declare module "react-date-object/calendars/indian" {
+  import type { Calendar } from "react-date-object";
+
   const indian: Calendar;
 
   export default indian;
 }
 
 declare module "react-date-object/locales/gregorian_en" {
+  import type { Locale } from "react-date-object";
+
   const gregorian_en: Locale;
 
   export default gregorian_en;
 }
 
 declare module "react-date-object/locales/gregorian_fa" {
+  import type { Locale } from "react-date-object";
+
   const gregorian_fa: Locale;
 
   export default gregorian_fa;
 }
 
 declare module "react-date-object/locales/gregorian_ar" {
+  import type { Locale } from "react-date-object";
+
   const gregorian_ar: Locale;
 
   export default gregorian_ar;
 }
 
 declare module "react-date-object/locales/gregorian_hi" {
+  import type { Locale } from "react-date-object";
+
   const gregorian_hi: Locale;
 
   export default gregorian_hi;
 }
 
 declare module "react-date-object/locales/persian_en" {
+  import type { Locale } from "react-date-object";
+
   const persian_en: Locale;
 
   export default persian_en;
 }
 
 declare module "react-date-object/locales/persian_fa" {
+  import type { Locale } from "react-date-object";
+
   const persian_fa: Locale;
 
   export default persian_fa;
 }
 
 declare module "react-date-object/locales/persian_ar" {
+  import type { Locale } from "react-date-object";
+
   const persian_ar: Locale;
 
   export default persian_ar;
 }
 
 declare module "react-date-object/locales/persian_hi" {
+  import type { Locale } from "react-date-object";
+
   const persian_hi: Locale;
 
   export default persian_hi;
 }
 
 declare module "react-date-object/locales/arabic_en" {
+  import type { Locale } from "react-date-object";
+
   const arabic_en: Locale;
 
   export default arabic_en;
 }
 
 declare module "react-date-object/locales/arabic_fa" {
+  import type { Locale } from "react-date-object";
+
   const arabic_fa: Locale;
 
   export default arabic_fa;
 }
 
 declare module "react-date-object/locales/arabic_ar" {
+  import type { Locale } from "react-date-object";
+
   const arabic_ar: Locale;
 
   export default arabic_ar;
 }
 
 declare module "react-date-object/locales/arabic_hi" {
+  import type { Locale } from "react-date-object";
+
   const arabic_hi: Locale;
 
   export default arabic_hi;
 }
 
 declare module "react-date-object/locales/indian_en" {
+  import type { Locale } from "react-date-object";
+
   const indian_en: Locale;
 
   export default indian_en;
 }
 
 declare module "react-date-object/locales/indian_fa" {
+  import type { Locale } from "react-date-object";
+
   const indian_fa: Locale;
 
   export default indian_fa;
 }
 
 declare module "react-date-object/locales/indian_ar" {
+  import type { Locale } from "react-date-object";
+
   const indian_ar: Locale;
 
   export default indian_ar;
 }
 
 declare module "react-date-object/locales/indian_hi" {
+  import type { Locale } from "react-date-object";
+
   const indian_hi: Locale;
 
   export default indian_hi;
