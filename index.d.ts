@@ -174,7 +174,7 @@ declare module "react-date-object" {
      *
      * date.format("MMMM MMM") //dec d
      */
-    setMonths(months: [string[]]): this;
+    setMonths(months: Array<string[]>): this;
     setMonth(month: number): this;
     /**
      * Use this method if you want to specify the names of week days manually.
@@ -196,7 +196,7 @@ declare module "react-date-object" {
      *
      * date.format("dddd ddd") //su s
      */
-    setWeekDays(weekDays: [string[]]): this;
+    setWeekDays(weekDays: Array<string[]>): this;
     setDigits(digits: string[]): this;
     /**
      * @param dayOfMonth
@@ -226,8 +226,8 @@ declare module "react-date-object" {
       date?: DateType;
       year?: number;
       month?: number;
-      months?: [string[]];
-      weekDays?: [string[]];
+      months?: Array<string[]>;
+      weekDays?: Array<string[]>;
       day?: number;
       hour?: number;
       minute?: number;
