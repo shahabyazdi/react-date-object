@@ -62,13 +62,22 @@ console.log(date.format()); //2021/06/10
 <td>/calendars/indian</td>
 </tr>
 <tr>
-<th rowspan="4">Locales</th>
+<th rowspan="5">Locales</th>
 <th>English</th>
 <td>/locales/gregorian_en</td>
 <td>/locales/persian_en</td>
 <td>/locales/persian_en</td>
 <td>/locales/arabic_en</td>
 <td>/locales/indian_en</td>
+</tr>
+
+<tr>
+<th>Portuguese - BRAZIL</th>
+<td>gregorian_pt_br</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 </tr>
 
 <tr>
