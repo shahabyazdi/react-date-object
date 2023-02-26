@@ -55,7 +55,7 @@ function build(path) {
     output: [
       {
         file: `${path}/${name}.js`,
-        format: "es",
+        format: "cjs",
         exports: "default",
         plugins: [terser()],
       },
