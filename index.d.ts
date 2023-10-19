@@ -575,6 +575,14 @@ declare module "react-date-object/locales/gregorian_hi" {
   export default gregorian_hi;
 }
 
+declare module "react-date-object/locales/gregorian_pt_br" {
+  import type { Locale } from "react-date-object";
+
+  const gregorian_pt_br: Locale;
+
+  export default gregorian_pt_br;
+}
+
 declare module "react-date-object/locales/persian_en" {
   import type { Locale } from "react-date-object";
 
