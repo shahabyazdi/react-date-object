@@ -15,7 +15,7 @@ export default [
           getBabelOutputPlugin({
             presets: [
               "@babel/preset-env",
-              { plugins: ["@babel/plugin-proposal-class-properties"] },
+              { plugins: ["transform-class-properties"] },
             ],
           }),
           terser(),
@@ -29,7 +29,7 @@ export default [
           getBabelOutputPlugin({
             presets: [
               "@babel/preset-env",
-              { plugins: ["@babel/plugin-proposal-class-properties"] },
+              { plugins: ["transform-class-properties"] },
             ],
           }),
           terser(),
