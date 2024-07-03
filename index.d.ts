@@ -543,7 +543,7 @@ declare module "react-date-object/calendars/indian" {
   export default indian;
 }
 
-declare module "date-object/calendars/cjs/julian" {
+declare module "react-date-object/calendars/julian" {
   const julian: Calendar;
 
   export = julian;
