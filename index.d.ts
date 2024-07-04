@@ -544,6 +544,8 @@ declare module "react-date-object/calendars/indian" {
 }
 
 declare module "react-date-object/calendars/julian" {
+  import type { Calendar } from "react-date-object";
+
   const julian: Calendar;
 
   export = julian;
