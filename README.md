@@ -21,19 +21,19 @@ To see the readme file for v1.x click <a href="https://github.com/shahabyazdi/re
 ## 1-1- npm:
 
 ```shell
-npm install react-date-object --save
+npm install fru-react-date-object --save
 ```
 
 ## 1-2- yarn:
 
 ```shell
-yarn add react-date-object
+yarn add fru-react-date-object
 ```
 
 # 2- Usage
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject();
 
@@ -118,9 +118,9 @@ console.log(date.format()); //2021/06/10
 ## 3-1- Persian Calendar, Farsi Locale
 
 ```javascript
-import DateObject from "react-date-object";
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
+import DateObject from "fru-react-date-object";
+import persian from "fru-react-date-object/calendars/persian";
+import persian_fa from "fru-react-date-object/locales/persian_fa";
 
 var date = new DateObject({ calendar: persian, locale: persian_fa });
 
@@ -130,9 +130,9 @@ console.log(date.format()); //۱۴۰۰/۰۳/۲۰
 ## 3-2- Arabic Calendar, Arabic Locale
 
 ```javascript
-import DateObject from "react-date-object";
-import arabic from "react-date-object/calendars/arabic";
-import arabic_ar from "react-date-object/locales/arabic_ar";
+import DateObject from "fru-react-date-object";
+import arabic from "fru-react-date-object/calendars/arabic";
+import arabic_ar from "fru-react-date-object/locales/arabic_ar";
 
 var date = new DateObject({ calendar: arabic, locale: arabic_ar });
 
@@ -142,9 +142,9 @@ console.log(date.format()); //١٤٤٢/١٠/٢٩
 ## 3-3- Indiann Calendar, Hindi Locale
 
 ```javascript
-import DateObject from "react-date-object";
-import indian from "react-date-object/calendars/indian";
-import indian_hi from "react-date-object/locales/indian_hi";
+import DateObject from "fru-react-date-object";
+import indian from "fru-react-date-object/calendars/indian";
+import indian_hi from "fru-react-date-object/locales/indian_hi";
 
 var date = new DateObject({ calendar: indian, locale: indian_hi });
 
@@ -162,7 +162,7 @@ console.log(date.format()); //१९४३/०३/२०
 ### 4-1-1- String (year month day hour minute second millisecond meridiem)
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject("2020 8 21 11 55 36 100 am");
 
@@ -176,7 +176,7 @@ console.log(date.format("YYYY/MM/DD hh:mm:ss.SSS a")); //2020/08/01 12:00:00.000
 ### 4-1-2- Number (unix time in milliseconds)
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject(1597994736000);
 
@@ -186,7 +186,7 @@ console.log(date.format("dddd DD MMMM @ hh:mm:ss.SSS a")); //Friday 21 August @ 
 ### 4-1-3- JavaScript Date
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var $date = new Date(2019, 8, 20);
 var date = new DateObject($date);
@@ -197,7 +197,7 @@ console.log(date.format()); //2019/09/20
 ### 4-1-4- DateObject
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var $date = new DateObject("2019/09/20");
 var date = new DateObject($date);
@@ -221,10 +221,10 @@ console.log(date.format()); //2019/09/20
 ```
 
 ```javascript
-import DateObject from "react-date-object";
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
-import persian_en from "react-date-object/locales/persian_en";
+import DateObject from "fru-react-date-object";
+import persian from "fru-react-date-object/calendars/persian";
+import persian_fa from "fru-react-date-object/locales/persian_fa";
+import persian_en from "fru-react-date-object/locales/persian_en";
 
 var date = new DateObject({
   date: new Date(),
@@ -270,10 +270,10 @@ console.log(date.format()); //31 Mordad 1399
 ```
 
 ```javascript
-import DateObject from "react-date-object";
-import persian from "react-date-object/calendars/persian";
-import persian_en from "react-date-object/locales/persian_en";
-import persian_fa from "react-date-object/locales/persian_fa";
+import DateObject from "fru-react-date-object";
+import persian from "fru-react-date-object/calendars/persian";
+import persian_en from "fru-react-date-object/locales/persian_en";
+import persian_fa from "fru-react-date-object/locales/persian_fa";
 
 var date = new DateObject({
   year: 2020,
@@ -318,11 +318,11 @@ If you use the convert method without argument, the date will be converted to Gr
 The second argument (Locale) is optional.
 
 ```javascript
-import DateObject from "react-date-object";
-import gregorian from "react-date-object/calendars/gregorian";
-import persian from "react-date-object/calendars/persian";
-import arabic from "react-date-object/calendars/arabic";
-import indian from "react-date-object/calendars/indian";
+import DateObject from "fru-react-date-object";
+import gregorian from "fru-react-date-object/calendars/gregorian";
+import persian from "fru-react-date-object/calendars/persian";
+import arabic from "fru-react-date-object/calendars/arabic";
+import indian from "fru-react-date-object/calendars/indian";
 
 var date = new DateObject();
 
@@ -347,7 +347,7 @@ default format is YYYY/MM/DD.
 to see all format types click [here](#5--Formatting-Tokens)
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject();
 
@@ -361,7 +361,7 @@ consoel.log(date.format("ddd DD MMM YYYY, hh:mm a")); //Sat 31 Oct 2020, 06:20 p
 ### formatting with ignore list:
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject();
 
@@ -383,13 +383,13 @@ console.log(
 ## 4-4- setter methods
 
 ```javascript
-import DateObject from "react-date-object";
-import gregorian from "react-date-object/calendars/gregorian";
-import persian from "react-date-object/calendars/persian";
-import indian from "react-date-object/calendars/indian";
-import gregorian_en from "react-date-object/locales/gregorian_en";
-import persian_en from "react-date-object/locales/persian_en";
-import indian_en from "react-date-object/locales/indian_en";
+import DateObject from "fru-react-date-object";
+import gregorian from "fru-react-date-object/calendars/gregorian";
+import persian from "fru-react-date-object/calendars/persian";
+import indian from "fru-react-date-object/calendars/indian";
+import gregorian_en from "fru-react-date-object/locales/gregorian_en";
+import persian_en from "fru-react-date-object/locales/persian_en";
+import indian_en from "fru-react-date-object/locales/indian_en";
 
 var date = new DateObject();
 
@@ -437,7 +437,7 @@ console.log(date.format()); //1942/08/05
 ## 4-5- get and set
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject();
 
@@ -516,9 +516,9 @@ date.calendar.name; //gregorian
 Remember that parsing date is based on the format you set
 
 ```javascript
-import DateObject from "react-date-object";
-import persian from "react-date-object/calendars/persian";
-import persian_en from "react-date-object/locales/persian_en";
+import DateObject from "fru-react-date-object";
+import persian from "fru-react-date-object/calendars/persian";
+import persian_en from "fru-react-date-object/locales/persian_en";
 
 var date = new DateObject();
 
@@ -544,8 +544,8 @@ console.log(date.format("dddd DD MMMM @ hh:mm a")); //Doshanbeh 03 Shahrivar @ 1
 ## 4-7- getValue
 
 ```javascript
-import DateObject from "react-date-object";
-import arabic_ar from "react-date-object/locales/arabic_ar.js";
+import DateObject from "fru-react-date-object";
+import arabic_ar from "fru-react-date-object/locales/arabic_ar.js";
 
 var date = new DateObject({
   date: "1442/01/01",
@@ -607,7 +607,7 @@ console.log(Number(date.format("YYYY"))); //NaN
 </table>
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject("2020/10/07 5:35:24 pm");
 
@@ -666,7 +666,7 @@ console.log(date.add(100, "milliseconds").format()); //2022/11/10 09:36:44.100
 </table>
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var yesterday = new DateObject().subtract(1, "day");
 ```
@@ -676,11 +676,11 @@ var yesterday = new DateObject().subtract(1, "day");
 ### 4-10-1 set(key:String,value:Any)
 
 ```javascript
-import DateObject from "react-date-object";
-import indian from "react-date-object/calendars/indian";
-import persian from "react-date-object/calendars/persian";
-import indian_hi from "react-date-object/locales/indian_hi";
-import persian_en from "react-date-object/locales/persian_en";
+import DateObject from "fru-react-date-object";
+import indian from "fru-react-date-object/calendars/indian";
+import persian from "fru-react-date-object/calendars/persian";
+import indian_hi from "fru-react-date-object/locales/indian_hi";
+import persian_en from "fru-react-date-object/locales/persian_en";
 
 var date = new DateObject(); //2020/10/31
 
@@ -699,11 +699,11 @@ console.log(
 ### 4-10-2 set(object)
 
 ```javascript
-import DateObject from "react-date-object/index";
-import persian from "react-date-object/calendars/persian";
-import gregorian from "react-date-object/calendars/gregorian";
-import persian_en from "react-date-object/locales/persian_en";
-import gregorian_en from "react-date-object/locales/gregorian_en";
+import DateObject from "fru-react-date-object/index";
+import persian from "fru-react-date-object/calendars/persian";
+import gregorian from "fru-react-date-object/calendars/gregorian";
+import persian_en from "fru-react-date-object/locales/persian_en";
+import gregorian_en from "fru-react-date-object/locales/gregorian_en";
 
 var date = new DateObject(); //2020/10/31
 
@@ -735,11 +735,11 @@ console.log(
 ## 4-11- toUTC()
 
 ```javascript
-import DateObject from "react-date-object";
-import arabic from "react-date-object/calendars/arabic";
-import gregorian from "react-date-object/calendars/gregorian";
-import arabic_en from "react-date-object/locales/arabic_en";
-import gregorian_en from "react-date-object/locales/gregorian_en";
+import DateObject from "fru-react-date-object";
+import arabic from "fru-react-date-object/calendars/arabic";
+import gregorian from "fru-react-date-object/calendars/gregorian";
+import arabic_en from "fru-react-date-object/locales/arabic_en";
+import gregorian_en from "fru-react-date-object/locales/gregorian_en";
 
 var date = new Date(); //Wed Oct 14 2020 11:12:18 GMT+0330
 
@@ -770,7 +770,7 @@ gregorianUTC : ${dateObject.convert(gregorian, gregorian_en).toString()}
 See the example below in case you want to use your personal data instead of default months, week days & digits
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject();
 
@@ -857,7 +857,7 @@ You can use `date.setMonths(months).setWeekDays(weekDays).setDigits(digits)` as 
 ## 4-13- other methods
 
 ```javascript
-import DateObject from "react-date-object";
+import DateObject from "fru-react-date-object";
 
 var date = new DateObject();
 
@@ -958,10 +958,10 @@ console.log(new DateObject(date.toJSON()).format()); //2020/12/27
 returns unix time in milliseconds
 
 ```javascript
-import DateObject from "react-date-object";
-import persian_calendar from "react-date-object/calendars/persian";
-import arabic_calendar from "react-date-object/calendars/arabic";
-import indian_calendar from "react-date-object/calendars/indian";
+import DateObject from "fru-react-date-object";
+import persian_calendar from "fru-react-date-object/calendars/persian";
+import arabic_calendar from "fru-react-date-object/calendars/arabic";
+import indian_calendar from "fru-react-date-object/calendars/indian";
 
 var gregorian = new DateObject();
 var persian = new DateObject({ date: gregorian, calendar: persian_calendar });
@@ -979,12 +979,12 @@ console.log(persian - gregorian === 0); //true
 ## 4-15- using calendars, format & locales
 
 ```javascript
-import DateObject from "react-date-object";
-import gregorian from "react-date-object/calendars/gregorian";
-import persian from "react-date-object/calendars/persian";
-import arabic from "react-date-object/calendars/arabic";
-import persian_fa from "react-date-object/locales/persian_fa";
-import gregorian_en from "react-date-object/locales/gregorian_en";
+import DateObject from "fru-react-date-object";
+import gregorian from "fru-react-date-object/calendars/gregorian";
+import persian from "fru-react-date-object/calendars/persian";
+import arabic from "fru-react-date-object/calendars/arabic";
+import persian_fa from "fru-react-date-object/locales/persian_fa";
+import gregorian_en from "fru-react-date-object/locales/gregorian_en";
 
 var date = new DateObject({
   calendar: gregorian,

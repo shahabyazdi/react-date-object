@@ -1,5 +1,5 @@
 {
-  "name": "react-date-object",
+  "name": "fru-react-date-object",
   "version": "2.1.9",
   "description": "JavaScript library for working with Date and Time in different calendars and locals",
   "main": "./dist/index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shahabyazdi/react-date-object.git"
+    "url": "git+https://github.com/fundraiseup/fru-react-date-object.git"
   },
   "keywords": [
     "react",
@@ -38,12 +38,7 @@
     "parse-date",
     "format-date"
   ],
-  "author": "Shahab Yazdi <sh.yazdi@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shahabyazdi/react-date-object/issues"
-  },
-  "homepage": "https://github.com/shahabyazdi/react-date-object#readme",
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
