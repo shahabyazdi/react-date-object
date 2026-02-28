@@ -41,7 +41,31 @@ export default [
   },
   ...build("calendars"),
   ...build("locales"),
+  ...buildCustom("calendars"),
 ];
+
+function buildCustom(path) {
+  const customPath = `./src/${path}`;
+
+  if (!fs.existsSync(customPath)) return [];
+
+  return fs
+    .readdirSync(customPath)
+    .filter((file) => file.endsWith(".js"))
+    .map((file) => file.replace(/\.js$/, ""))
+    .map((name) => ({
+      input: `${customPath}/${name}.js`,
+      output: [
+        {
+          file: `${path}/${name}.js`,
+          format: "cjs",
+          exports: "default",
+          plugins: [terser()],
+        },
+      ],
+      plugins: [commonjs()],
+    }));
+}
 
 function build(path) {
   const nodePath = `./node_modules/date-object/${path}`;
