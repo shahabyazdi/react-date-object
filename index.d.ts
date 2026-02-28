@@ -551,6 +551,14 @@ declare module "react-date-object/calendars/julian" {
   export = julian;
 }
 
+declare module "react-date-object/calendars/real-persian" {
+  import type { Calendar } from "react-date-object";
+
+  const realPersian: Omit<Calendar, "leapsLength">;
+
+  export default realPersian;
+}
+
 declare module "react-date-object/locales/gregorian_en" {
   import type { Locale } from "react-date-object";
 
